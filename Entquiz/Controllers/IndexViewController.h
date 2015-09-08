@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  IndexViewController.h
 //  Entquiz
 //
 //  Created by Mustafin Askar on 27/06/2015.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface IndexViewController : UIViewController
 
 
 @end
