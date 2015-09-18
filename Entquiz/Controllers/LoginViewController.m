@@ -7,6 +7,7 @@
 #import "StdTextField.h"
 #import "AAForm.h"
 #import "MainViewController.h"
+#import "StdButton.h"
 
 #define kLofinTextFieldPlaceholder @"Логин"
 #define kLoginButtonTitle @"Войти"
@@ -61,10 +62,13 @@
     passwordTextField.placeholder = self.kPasswordTextFieldPlaceholder;
     [form pushView:passwordTextField marginTop:20 centered:YES];
 
-    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [loginButton setTitle:kLoginButtonTitle forState:UIControlStateNormal];
-    [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-    [form pushView:loginButton marginTop:20 centered:YES];
+    StdButton *loginButton = [[StdButton alloc] initWithTitle:kLoginButtonTitle];
+    [form pushView:loginButton marginTop:150 centered:YES];
+
+//    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//    [loginButton setTitle:kLoginButtonTitle forState:UIControlStateNormal];
+//    [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+//    [form pushView:loginButton marginTop:20 centered:YES];
 
     UIButton *forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [forgotPasswordButton setTitle:kForgotPasswordButtonTitle forState:UIControlStateNormal];

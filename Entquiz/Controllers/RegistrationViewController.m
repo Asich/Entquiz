@@ -11,7 +11,7 @@
 #import "AAForm.h"
 
 #define kLofinTextFieldPlaceholder @"Логин"
-#define kLoginButtonTitle @"Войти"
+#define kLoginButtonTitle @"Пароль"
 #define kRegisterButtonTitle @"Создать"
 
 @interface RegistrationViewController ()

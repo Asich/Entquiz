@@ -4,6 +4,7 @@
 //
 
 #import "StdTextField.h"
+#import "ViewFrameAccessor.h"
 
 
 #define kTextFieldHeight 30
@@ -16,9 +17,19 @@
 - (id)init {
     self = [super initWithFrame:CGRectMake(0, 0, kTextFieldWidth, kTextFieldHeight)];
     if (self) {
-        self.borderStyle = UITextBorderStyleRoundedRect;
+
+        [self configUI];
+
     }
     return self;
+}
+
+- (void)configUI {
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, self.bottom - 1, self.width, 0.3)];
+    line.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:line];
+
+    self.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
 @end
