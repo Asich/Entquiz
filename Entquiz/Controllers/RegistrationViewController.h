@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class StdTextField;
+
 @interface RegistrationViewController : UIViewController
 
 @end

@@ -33,7 +33,6 @@
 
 }
 
-
 #pragma mark -
 
 - (void)configUI {

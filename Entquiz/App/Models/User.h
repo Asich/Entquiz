@@ -8,6 +8,9 @@
 
 @interface User : NSObject
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *accessToken;
+
++ (instancetype)sharedInstance;
 
 @end

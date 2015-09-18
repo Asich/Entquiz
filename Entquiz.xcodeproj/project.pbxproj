@@ -12,6 +12,7 @@
 		3C9DC55396BBE0701C4C9EAD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCCBB96197A481BAF7659 /* User.m */; };
 		3C9DC64ABDE22828362BCD6A /* NewGameConfigureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCDE09D35BFDAEBCB8ECC /* NewGameConfigureViewController.m */; };
 		3C9DCA0D4061AD00F2787176 /* StdTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC75E89784019AC157C53 /* StdTextField.m */; };
+		3C9DCA208B9E8A5863286C68 /* AuthApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC90DD53E71FF4B55BB37 /* AuthApi.m */; };
 		3C9DCAB411DDAA53BAE748D0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC056E0E3A39CB2DC2B4C /* MainViewController.m */; };
 		3C9DCD5178F98A3640515D60 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC692516B0054E3D6C0CB /* StartGameViewController.m */; };
 		3C9DCDD97F7D3DE17D1124D1 /* StdButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCDCA0AFFA93B04567742 /* StdButton.m */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		3C9DC056E0E3A39CB2DC2B4C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3C9DC09A2595104DE730BD5D /* AAForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAForm.m; sourceTree = "<group>"; };
+		3C9DC158757C5EE058CBBEBA /* AuthApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthApi.h; sourceTree = "<group>"; };
 		3C9DC2373378AA467005153C /* StdTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdTextField.h; sourceTree = "<group>"; };
 		3C9DC3638BD1F63D0357EB11 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3C9DC3A5AC072A35EE2F0EB0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		3C9DC75E89784019AC157C53 /* StdTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdTextField.m; sourceTree = "<group>"; };
 		3C9DC8136BD7B510AC669B82 /* StdButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdButton.h; sourceTree = "<group>"; };
 		3C9DC843CD10FCAD1789BBB7 /* AMFloatLabelTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMFloatLabelTextField.m; sourceTree = "<group>"; };
+		3C9DC90DD53E71FF4B55BB37 /* AuthApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthApi.m; sourceTree = "<group>"; };
 		3C9DCA81E1E26482ECF40B5F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3C9DCCBB96197A481BAF7659 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		3C9DCDCA0AFFA93B04567742 /* StdButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StdButton.m; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 			children = (
 				7B471CBB1BA84E4C0061D406 /* ApiClient.h */,
 				7B471CBC1BA84E4C0061D406 /* ApiClient.m */,
+				3C9DC90DD53E71FF4B55BB37 /* AuthApi.m */,
+				3C9DC158757C5EE058CBBEBA /* AuthApi.h */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -415,6 +420,7 @@
 				3C9DCDD97F7D3DE17D1124D1 /* StdButton.m in Sources */,
 				3C9DC54D08F556106A5FAF01 /* AMFloatLabelTextField.m in Sources */,
 				7B471CBD1BA84E4C0061D406 /* ApiClient.m in Sources */,
+				3C9DCA208B9E8A5863286C68 /* AuthApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

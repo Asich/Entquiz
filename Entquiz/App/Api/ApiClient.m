@@ -17,6 +17,7 @@
     static AFHTTPRequestOperationManager *sharedManager;
     dispatch_once(&once, ^ {
         sharedManager = [AFHTTPRequestOperationManager manager];
+        sharedManager.requestSerializer = [AFJSONRequestSerializer serializer];
     });
     return sharedManager;
 }

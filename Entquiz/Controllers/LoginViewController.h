@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class StdTextField;
+
 
 @interface LoginViewController : UIViewController
 @end

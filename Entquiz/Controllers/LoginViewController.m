@@ -8,6 +8,11 @@
 #import "AAForm.h"
 #import "MainViewController.h"
 #import "StdButton.h"
+#import "ApiClient.h"
+#import "AuthApi.h"
+#import "SVProgressHUD.h"
+#import "User.h"
+#import "UIWebView+AFNetworking.h"
 
 #define kLofinTextFieldPlaceholder @"Логин"
 #define kLoginButtonTitle @"Войти"
@@ -15,6 +20,8 @@
 
 @interface LoginViewController ()
 @property(nonatomic, copy) NSString *kPasswordTextFieldPlaceholder;
+@property(nonatomic, strong) StdTextField *userNameTextField;
+@property(nonatomic, strong) StdTextField *passwordTextField;
 @end
 
 @implementation LoginViewController {
@@ -37,8 +44,24 @@
 #pragma mark - config actions
 
 - (void)login {
-    MainViewController *vc = [[MainViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.userNameTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
+        [SVProgressHUD showWithStatus:@"Вход"];
+        [AuthApi loginWithName:self.userNameTextField.text andPassword:self.passwordTextField.text success:^(id response) {
+            NSLog(@"REGISTER SUCCESS RESPONSE: %@", response);
+
+            if ([response[@"success"] boolValue]) {
+                NSLog(@"authorized user");
+
+                [User sharedInstance].userName = self.userNameTextField.text;
+                [User sharedInstance].accessToken = response[@"token"];
+            }
+
+            [SVProgressHUD dismiss];
+        } failure:^(NSInteger code, NSString *message) {
+            NSLog(@"REGISTER FAILURE MESSAGE: %@", message);
+            [SVProgressHUD dismiss];
+        }];
+    }
 }
 
 #pragma mark - config ui
@@ -53,22 +76,19 @@
 
     AAForm *form = [[AAForm alloc] initWithScrollView:scrollView];
 
-    StdTextField *loginTextField = [[StdTextField alloc] init];
-    loginTextField.placeholder = kLofinTextFieldPlaceholder;
-    [form pushView:loginTextField marginTop:150 centered:YES];
+    self.userNameTextField = [[StdTextField alloc] init];
+    self.userNameTextField.placeholder = kLofinTextFieldPlaceholder;
+    [form pushView:self.userNameTextField marginTop:150 centered:YES];
 
-    StdTextField *passwordTextField = [[StdTextField alloc] init];
+    self.passwordTextField = [[StdTextField alloc] init];
     self.kPasswordTextFieldPlaceholder = @"Пароль";
-    passwordTextField.placeholder = self.kPasswordTextFieldPlaceholder;
-    [form pushView:passwordTextField marginTop:20 centered:YES];
+    self.passwordTextField.placeholder = self.kPasswordTextFieldPlaceholder;
+    [form pushView:self.passwordTextField marginTop:20 centered:YES];
 
-    StdButton *loginButton = [[StdButton alloc] initWithTitle:kLoginButtonTitle];
-    [form pushView:loginButton marginTop:150 centered:YES];
-
-//    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//    [loginButton setTitle:kLoginButtonTitle forState:UIControlStateNormal];
-//    [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-//    [form pushView:loginButton marginTop:20 centered:YES];
+    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [loginButton setTitle:kLoginButtonTitle forState:UIControlStateNormal];
+    [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+    [form pushView:loginButton marginTop:20 centered:YES];
 
     UIButton *forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [forgotPasswordButton setTitle:kForgotPasswordButtonTitle forState:UIControlStateNormal];
