@@ -10,7 +10,6 @@
 #import "AAForm.h"
 #import "RegistrationViewController.h"
 #import "LoginViewController.h"
-#import "AMFloatLabelTextField.h"
 
 #define kButtonWidth 200
 #define kButtonHeight 40
@@ -64,28 +63,14 @@
     UIButton *createAccountButton = [UIButton buttonWithType:UIButtonTypeSystem];
     createAccountButton.frame = CGRectMake(0, 0, kButtonWidth, kButtonHeight);
     [createAccountButton setTitle:kCreateButtonTitle forState:UIControlStateNormal];
-    [createAccountButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     [createAccountButton addTarget:self action:@selector(createAccount) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:createAccountButton marginTop:100 centered:YES];
 
     UIButton *enterButton = [UIButton buttonWithType:UIButtonTypeSystem];
     enterButton.frame = CGRectMake(0, 0, kButtonWidth, kButtonHeight);
     [enterButton setTitle:kEnterButtonTitle forState:UIControlStateNormal];
-    [enterButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     [enterButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:enterButton marginTop:20 centered:YES];
-
-    //testing
-//    AMFloatLabelTextField *tf = [[AMFloatLabelTextField alloc] initWithPlaceholder:@"Name" width:200];
-//    [form pushView:tf marginTop:20 centered:YES];
-//
-//
-//    AMFloatLabelTextField *tf2 = [[AMFloatLabelTextField alloc] initWithPlaceholder:@"Email" width:200];
-//    [form pushView:tf2 marginTop:0 centered:YES];
-//
-//    AMFloatLabelTextField *tf3 = [[AMFloatLabelTextField alloc] initWithPlaceholder:@"Phone number" width:200];
-//    [form pushView:tf3 marginTop:0 centered:YES];
-    
 }
 
 #pragma mark -

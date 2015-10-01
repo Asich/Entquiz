@@ -7,19 +7,18 @@
 #import "StdTextField.h"
 #import "AAForm.h"
 #import "MainViewController.h"
-#import "StdButton.h"
 #import "ApiClient.h"
 #import "AuthApi.h"
 #import "SVProgressHUD.h"
 #import "User.h"
 #import "UIWebView+AFNetworking.h"
 
-#define kLofinTextFieldPlaceholder @"Логин"
-#define kLoginButtonTitle @"Войти"
+#define kUserNameTextFieldPlaceholder @"Логин"
+#define kPasswordTextFieldPlaceholder @"Пароль"
+#define kEnterButtonTitle @"Войти"
 #define kForgotPasswordButtonTitle @"Забыл пароль"
 
 @interface LoginViewController ()
-@property(nonatomic, copy) NSString *kPasswordTextFieldPlaceholder;
 @property(nonatomic, strong) StdTextField *userNameTextField;
 @property(nonatomic, strong) StdTextField *passwordTextField;
 @end
@@ -77,16 +76,16 @@
     AAForm *form = [[AAForm alloc] initWithScrollView:scrollView];
 
     self.userNameTextField = [[StdTextField alloc] init];
-    self.userNameTextField.placeholder = kLofinTextFieldPlaceholder;
+    self.userNameTextField.placeholder = kUserNameTextFieldPlaceholder;
     [form pushView:self.userNameTextField marginTop:150 centered:YES];
 
     self.passwordTextField = [[StdTextField alloc] init];
-    self.kPasswordTextFieldPlaceholder = @"Пароль";
-    self.passwordTextField.placeholder = self.kPasswordTextFieldPlaceholder;
+    self.passwordTextField.placeholder = kPasswordTextFieldPlaceholder;
     [form pushView:self.passwordTextField marginTop:20 centered:YES];
 
+
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [loginButton setTitle:kLoginButtonTitle forState:UIControlStateNormal];
+    [loginButton setTitle:kEnterButtonTitle forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:loginButton marginTop:20 centered:YES];
 

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "IndexViewController.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -26,6 +27,10 @@
     self.window.rootViewController = nc;
     
     [self.window makeKeyAndVisible];
+
+    [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:YES];
+    [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:YES];
+
     return YES;
 }
 
