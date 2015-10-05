@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C9DC2ED85F987F0A95FA1F0 /* ResultStatusContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCC1DAD8B6CCC295B2875 /* ResultStatusContainerView.m */; };
 		3C9DC3A4FE84875903FAB100 /* AAForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC09A2595104DE730BD5D /* AAForm.m */; };
+		3C9DC3B342715AEC6A136602 /* RoundResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC58B86C337E3399ED561 /* RoundResultView.m */; };
+		3C9DC41729C5BBF456289993 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC186878D360B8AAA2ADC /* QuestionViewController.m */; };
 		3C9DC4A286E334FB53F45AD3 /* SecurityTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCA9EB0EBB75844589C4E /* SecurityTokenManager.m */; };
+		3C9DC535BEA2EDDB95B5E76F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC6AEF8D2E2D31A25A103 /* SettingsViewController.m */; };
 		3C9DC55396BBE0701C4C9EAD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCCBB96197A481BAF7659 /* User.m */; };
 		3C9DC64ABDE22828362BCD6A /* NewGameConfigureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCDE09D35BFDAEBCB8ECC /* NewGameConfigureViewController.m */; };
+		3C9DC8E7B936CB859064C2F9 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCEFFB8851E28B7D59D06 /* StatisticsViewController.m */; };
+		3C9DCA189A23901E9212D331 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC441F5B1A23771B12644 /* GameViewController.m */; };
 		3C9DCA208B9E8A5863286C68 /* AuthApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC90DD53E71FF4B55BB37 /* AuthApi.m */; };
+		3C9DCA4E76B5326DC2382F56 /* ChooseCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC8F5B63D67FBE1BDA449 /* ChooseCategoryViewController.m */; };
 		3C9DCAB411DDAA53BAE748D0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC056E0E3A39CB2DC2B4C /* MainViewController.m */; };
 		3C9DCCB2C1ABDE6A2BAE10D2 /* UIViewController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC8DF4B141DE35E466BF5 /* UIViewController+Extensions.m */; };
 		3C9DCD5178F98A3640515D60 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC692516B0054E3D6C0CB /* StartGameViewController.m */; };
+		3C9DCE2E9613600B746FCF42 /* ScoreContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCC438A533A3E2E894E1D /* ScoreContainerView.m */; };
 		3C9DCEF667408CECB013D543 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC3A5AC072A35EE2F0EB0 /* LoginViewController.m */; };
 		7B0ABE881B3EEC37005A062C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0ABE871B3EEC37005A062C /* main.m */; };
 		7B0ABE8B1B3EEC37005A062C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0ABE8A1B3EEC37005A062C /* AppDelegate.m */; };
@@ -47,19 +55,35 @@
 		3C9DC09A2595104DE730BD5D /* AAForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAForm.m; sourceTree = "<group>"; };
 		3C9DC147E0BD153C368181E0 /* UIViewController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extensions.h"; sourceTree = "<group>"; };
 		3C9DC158757C5EE058CBBEBA /* AuthApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthApi.h; sourceTree = "<group>"; };
+		3C9DC186878D360B8AAA2ADC /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		3C9DC1AADEBFF3F526EB6821 /* SecurityTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityTokenManager.h; sourceTree = "<group>"; };
+		3C9DC1E5CEF4FCC78D0659BA /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		3C9DC1EBBF6877628EF7EAB4 /* ChooseCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCategoryViewController.h; sourceTree = "<group>"; };
 		3C9DC3638BD1F63D0357EB11 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3C9DC3A5AC072A35EE2F0EB0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3C9DC41BBA623B81358622BB /* ResultStatusContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultStatusContainerView.h; sourceTree = "<group>"; };
+		3C9DC441F5B1A23771B12644 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		3C9DC516B14A0216B6F50F91 /* TargetConditionals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetConditionals.h; sourceTree = "<group>"; };
+		3C9DC58B86C337E3399ED561 /* RoundResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundResultView.m; sourceTree = "<group>"; };
+		3C9DC5BC171431A32359C2EC /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		3C9DC692516B0054E3D6C0CB /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
+		3C9DC69479248D27CB417D9B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		3C9DC6AEF8D2E2D31A25A103 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3C9DC6D82B600116BAB6EADE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3C9DC8DF4B141DE35E466BF5 /* UIViewController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extensions.m"; sourceTree = "<group>"; };
+		3C9DC8F5B63D67FBE1BDA449 /* ChooseCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCategoryViewController.m; sourceTree = "<group>"; };
 		3C9DC90DD53E71FF4B55BB37 /* AuthApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthApi.m; sourceTree = "<group>"; };
+		3C9DC97ED809C860B20C40F1 /* ScoreContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreContainerView.h; sourceTree = "<group>"; };
+		3C9DC9F3A2CE2636A0B24904 /* RoundResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundResultView.h; sourceTree = "<group>"; };
 		3C9DCA81E1E26482ECF40B5F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3C9DCA9EB0EBB75844589C4E /* SecurityTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityTokenManager.m; sourceTree = "<group>"; };
+		3C9DCC1DAD8B6CCC295B2875 /* ResultStatusContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultStatusContainerView.m; sourceTree = "<group>"; };
+		3C9DCC438A533A3E2E894E1D /* ScoreContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreContainerView.m; sourceTree = "<group>"; };
 		3C9DCCBB96197A481BAF7659 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		3C9DCD9C1A01998A0D80156F /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		3C9DCDE09D35BFDAEBCB8ECC /* NewGameConfigureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameConfigureViewController.m; sourceTree = "<group>"; };
 		3C9DCE261861EC1FA80A6A45 /* Entquiz-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entquiz-Prefix.pch"; sourceTree = "<group>"; };
+		3C9DCEFFB8851E28B7D59D06 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		3C9DCF16ED334892F2A96EA0 /* AAForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAForm.h; sourceTree = "<group>"; };
 		3C9DCF3D94A63A5A9823C831 /* NewGameConfigureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameConfigureViewController.h; sourceTree = "<group>"; };
 		3C9DCFAF860C2777BC1800EA /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
@@ -252,6 +276,16 @@
 				3C9DCA81E1E26482ECF40B5F /* MainViewController.h */,
 				3C9DC692516B0054E3D6C0CB /* StartGameViewController.m */,
 				3C9DCFAF860C2777BC1800EA /* StartGameViewController.h */,
+				3C9DC6AEF8D2E2D31A25A103 /* SettingsViewController.m */,
+				3C9DC1E5CEF4FCC78D0659BA /* SettingsViewController.h */,
+				3C9DCEFFB8851E28B7D59D06 /* StatisticsViewController.m */,
+				3C9DCD9C1A01998A0D80156F /* StatisticsViewController.h */,
+				3C9DC441F5B1A23771B12644 /* GameViewController.m */,
+				3C9DC69479248D27CB417D9B /* GameViewController.h */,
+				3C9DC8F5B63D67FBE1BDA449 /* ChooseCategoryViewController.m */,
+				3C9DC1EBBF6877628EF7EAB4 /* ChooseCategoryViewController.h */,
+				3C9DC186878D360B8AAA2ADC /* QuestionViewController.m */,
+				3C9DC5BC171431A32359C2EC /* QuestionViewController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,6 +318,12 @@
 			children = (
 				7B6EC3861BBD24C400AF05CA /* StdTextField.h */,
 				7B6EC3871BBD24C400AF05CA /* StdTextField.m */,
+				3C9DCC438A533A3E2E894E1D /* ScoreContainerView.m */,
+				3C9DC97ED809C860B20C40F1 /* ScoreContainerView.h */,
+				3C9DC58B86C337E3399ED561 /* RoundResultView.m */,
+				3C9DC9F3A2CE2636A0B24904 /* RoundResultView.h */,
+				3C9DCC1DAD8B6CCC295B2875 /* ResultStatusContainerView.m */,
+				3C9DC41BBA623B81358622BB /* ResultStatusContainerView.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -441,6 +481,14 @@
 				3C9DCA208B9E8A5863286C68 /* AuthApi.m in Sources */,
 				3C9DC4A286E334FB53F45AD3 /* SecurityTokenManager.m in Sources */,
 				3C9DCCB2C1ABDE6A2BAE10D2 /* UIViewController+Extensions.m in Sources */,
+				3C9DC535BEA2EDDB95B5E76F /* SettingsViewController.m in Sources */,
+				3C9DC8E7B936CB859064C2F9 /* StatisticsViewController.m in Sources */,
+				3C9DCA189A23901E9212D331 /* GameViewController.m in Sources */,
+				3C9DCA4E76B5326DC2382F56 /* ChooseCategoryViewController.m in Sources */,
+				3C9DC41729C5BBF456289993 /* QuestionViewController.m in Sources */,
+				3C9DCE2E9613600B746FCF42 /* ScoreContainerView.m in Sources */,
+				3C9DC3B342715AEC6A136602 /* RoundResultView.m in Sources */,
+				3C9DC2ED85F987F0A95FA1F0 /* ResultStatusContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

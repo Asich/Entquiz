@@ -43,6 +43,8 @@
 #pragma mark - config actions
 
 - (void)login {
+    __weak LoginViewController *wSelf = self;
+    
     if (self.userNameTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
         [SVProgressHUD showWithStatus:@"Вход"];
         [AuthApi loginWithName:self.userNameTextField.text andPassword:self.passwordTextField.text success:^(id response) {
@@ -53,6 +55,8 @@
 
                 [User sharedInstance].userName = self.userNameTextField.text;
                 [User sharedInstance].accessToken = response[@"token"];
+                
+                [wSelf gotoMainViewController];
             }
 
             [SVProgressHUD dismiss];
@@ -61,6 +65,11 @@
             [SVProgressHUD dismiss];
         }];
     }
+}
+
+- (void)gotoMainViewController {
+    MainViewController *vc = [[MainViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - config ui

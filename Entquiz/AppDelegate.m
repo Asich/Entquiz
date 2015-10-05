@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "IndexViewController.h"
+#import "GameViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
@@ -22,9 +23,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
 
-    IndexViewController *vc = [[IndexViewController alloc] init];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-    self.window.rootViewController = nc;
+    //IndexViewController *vc = [[IndexViewController alloc] init];
+    //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    GameViewController *vc = [[GameViewController alloc] init];
+    self.window.rootViewController = vc;
     
     [self.window makeKeyAndVisible];
 

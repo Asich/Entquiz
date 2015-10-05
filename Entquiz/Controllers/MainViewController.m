@@ -6,6 +6,9 @@
 #import "MainViewController.h"
 #import "AAForm.h"
 #import "StartGameViewController.h"
+#import "User.h"
+#import "StatisticsViewController.h"
+#import "SettingsViewController.h"
 
 #define kSettingsButtonTitle @"Settings"
 #define kStatisticsButtonTitle @"Statistics"
@@ -31,11 +34,13 @@
 #pragma mark - config actions
 
 - (void)showStatistics {
-
+    StatisticsViewController *vc = [[StatisticsViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)showSettings {
-
+    SettingsViewController *vc = [[SettingsViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)startNewGame {
@@ -67,6 +72,11 @@
     [self.view addSubview:scrollView];
 
     AAForm *form = [[AAForm alloc] initWithScrollView:scrollView];
+
+    UILabel *userName = [[UILabel alloc] init];
+    userName.text = [NSString stringWithFormat:@"Вы в сети как %@", [User sharedInstance].userName];
+    [userName sizeToFit];
+    [form pushView:userName marginLeft:15 marginTop:50];
     
     UIButton *newGameButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [newGameButton setTitle:kNewGameButtonTitle forState:UIControlStateNormal];
