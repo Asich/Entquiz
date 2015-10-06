@@ -12,6 +12,7 @@
 #import "SVProgressHUD.h"
 #import "User.h"
 #import "UIWebView+AFNetworking.h"
+#import "SecurityTokenManager.h"
 
 #define kUserNameTextFieldPlaceholder @"Логин"
 #define kPasswordTextFieldPlaceholder @"Пароль"
@@ -46,6 +47,7 @@
     __weak LoginViewController *wSelf = self;
     
     if (self.userNameTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
+
         [SVProgressHUD showWithStatus:@"Вход"];
         [AuthApi loginWithName:self.userNameTextField.text andPassword:self.passwordTextField.text success:^(id response) {
             NSLog(@"REGISTER SUCCESS RESPONSE: %@", response);
@@ -55,7 +57,14 @@
 
                 [User sharedInstance].userName = self.userNameTextField.text;
                 [User sharedInstance].accessToken = response[@"token"];
-                
+
+                //For token based authentication
+                //save userName to userDefaults
+                [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"userName"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                //save secure token for name
+                [[SecurityTokenManager sharedManager] writeToken:response[@"token"] userName:self.userNameTextField.text];
+
                 [wSelf gotoMainViewController];
             }
 

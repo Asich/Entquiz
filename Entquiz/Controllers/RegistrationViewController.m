@@ -14,6 +14,8 @@
 #import "ALView+PureLayout.h"
 #import "StdTextField.h"
 #import "UIViewController+Extensions.h"
+#import "User.h"
+#import "MainViewController.h"
 
 #define kUserNameTextFieldPlaceholder @"Логин"
 #define kPasswordButtonTitle @"Пароль"
@@ -43,28 +45,6 @@
 
 #pragma mark - config actions
 
-- (void)gotoMainVC {
-
-}
-
-- (void)loginWithUserName:(NSString *)userName password:(NSString *)password {
-    __weak RegistrationViewController *wSelf = self;
-    [SVProgressHUD show];
-    [AuthApi loginWithName:userName andPassword:password success:^(id response) {
-        [SVProgressHUD dismiss];
-
-        if ([response[@"success"] boolValue]) {
-            NSString *token = response[@"token"];
-            [[SecurityTokenManager sharedManager] writeToken:token userName:userName];
-            [wSelf gotoMainVC];
-        }
-
-    } failure:^(NSInteger code, NSString *message) {
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"Ошибка"];
-    }];
-}
-
 - (void)register {
     __weak RegistrationViewController *wSelf = self;
 
@@ -75,7 +55,7 @@
 
             if ([response[@"success"] boolValue]) {
                 [SVProgressHUD showSuccessWithStatus:@"Вы успешно зарегистривоались"];
-                [wSelf loginWithUserName:self.userNameTextField.text password:self.passwordTextField.text];
+                [wSelf login];
             }
 
         } failure:^(NSInteger code, NSString *message) {
@@ -83,6 +63,44 @@
             [SVProgressHUD dismiss];
         }];
     }
+}
+
+- (void)login {
+    __weak RegistrationViewController *wSelf = self;
+
+    if (self.userNameTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
+
+        [SVProgressHUD showWithStatus:@"Вход"];
+        [AuthApi loginWithName:self.userNameTextField.text andPassword:self.passwordTextField.text success:^(id response) {
+            NSLog(@"REGISTER SUCCESS RESPONSE: %@", response);
+
+            if ([response[@"success"] boolValue]) {
+                NSLog(@"authorized user");
+
+                [User sharedInstance].userName = self.userNameTextField.text;
+                [User sharedInstance].accessToken = response[@"token"];
+
+                //For token based authentication
+                //save userName to userDefaults
+                [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"userName"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                //save secure token for name
+                [[SecurityTokenManager sharedManager] writeToken:response[@"token"] userName:self.userNameTextField.text];
+
+                [wSelf gotoMainViewController];
+            }
+
+            [SVProgressHUD dismiss];
+        } failure:^(NSInteger code, NSString *message) {
+            NSLog(@"REGISTER FAILURE MESSAGE: %@", message);
+            [SVProgressHUD dismiss];
+        }];
+    }
+}
+
+- (void)gotoMainViewController {
+    MainViewController *vc = [[MainViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - config ui

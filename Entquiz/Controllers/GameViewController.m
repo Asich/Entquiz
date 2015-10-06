@@ -8,6 +8,7 @@
 #import "ScoreContainerView.h"
 #import "User.h"
 #import "RoundResultView.h"
+#import "LocalJsonWrapper.h"
 
 
 @implementation GameViewController {

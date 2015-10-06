@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "IndexViewController.h"
 #import "GameViewController.h"
+#import "ChooseCategoryViewController.h"
+#import "GameRound.h"
+#import "LocalJsonWrapper.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
@@ -23,10 +26,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
 
-    //IndexViewController *vc = [[IndexViewController alloc] init];
-    //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-    GameViewController *vc = [[GameViewController alloc] init];
-    self.window.rootViewController = vc;
+    IndexViewController *vc = [[IndexViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = nc;
     
     [self.window makeKeyAndVisible];
 

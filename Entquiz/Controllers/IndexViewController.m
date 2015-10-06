@@ -10,6 +10,9 @@
 #import "AAForm.h"
 #import "RegistrationViewController.h"
 #import "LoginViewController.h"
+#import "SecurityTokenManager.h"
+#import "MainViewController.h"
+#import "User.h"
 
 #define kButtonWidth 200
 #define kButtonHeight 40
@@ -28,7 +31,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self buildUI];
+    [self configUI];
+    [self authenticateUser];
+}
+
+- (void)authenticateUser {
+    //todo do authentication with token
+
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    if (userName) {
+        NSString *secureToken = [[SecurityTokenManager sharedManager] readTokenForUserName:userName];
+        [User sharedInstance].accessToken = secureToken;
+        [User sharedInstance].userName = userName;
+        if (secureToken) {
+            MainViewController *mainViewController = [[MainViewController alloc] init];
+            [self.navigationController pushViewController:mainViewController animated:YES];
+        }
+    }
 }
 
 #pragma mark - config actions
@@ -45,7 +64,7 @@
 
 #pragma mark - build UI
 
-- (void)buildUI {
+- (void)configUI {
     self.view.backgroundColor = [UIColor whiteColor];
 
     CGRect frame = CGRectMake(0, 0, [ASize screenWidth], [ASize screenHeight]);
