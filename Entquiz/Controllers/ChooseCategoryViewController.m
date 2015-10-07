@@ -46,11 +46,13 @@
         RoundCategory *choosenRoundCategory = self.roundData[(NSUInteger) categoryButton.tag];
         self.onRoundCategoryClick(choosenRoundCategory);
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - config ui
 
 - (void)configUI {
+    self.view.backgroundColor = [UIColor whiteColor];
 
     UIView *contentView = [[UIView alloc] init];
     [self.view addSubview:contentView];
@@ -68,13 +70,19 @@
         RoundCategory *category2 = roundData2.category;
         RoundCategory *category3 = roundData3.category;
 
+        UILabel *title = [[UILabel alloc] init];
+        title.text = @"Выберите категорию";
+        [contentView addSubview:title];
+        [title autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:150];
+        [title autoAlignAxisToSuperviewAxis:ALAxisVertical];
+
         UIButton *categoryButton1 = [UIButton buttonWithType:UIButtonTypeSystem];
         categoryButton1.tag = 0;
         [categoryButton1 setTitle:category1.name forState:UIControlStateNormal];
         [categoryButton1 addTarget:self action:@selector(clickCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
         [contentView addSubview:categoryButton1];
         [categoryButton1 autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        [categoryButton1 autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:200];
+        [categoryButton1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:title withOffset:50];
 
         UIButton *categoryButton2 = [UIButton buttonWithType:UIButtonTypeSystem];
         categoryButton2.tag = 1;

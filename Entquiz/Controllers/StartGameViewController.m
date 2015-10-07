@@ -5,6 +5,7 @@
 
 #import "StartGameViewController.h"
 #import "AAForm.h"
+#import "PlayingGameManagerViewController.h"
 
 
 #define kFindRibalButtonTitle @"Найти соперника"
@@ -33,7 +34,9 @@
 }
 
 - (void)randomRival {
-
+    //todo: after loading the first round category with question and game will start in server
+    PlayingGameManagerViewController *vc = [[PlayingGameManagerViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - config ui

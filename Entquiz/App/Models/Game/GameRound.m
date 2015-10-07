@@ -1,6 +1,7 @@
 #import "GameRound.h"
 #import "RoundData.h"
 #import "GameRoundCreatedAt.h"
+#import "RoundCategory.h"
 
 @implementation GameRound
 
@@ -54,6 +55,15 @@
 
 }
 
+#pragma mark -
 
+- (RoundData *)getRoundDataByRoundCategory:(RoundCategory *)roundCategory {
+    for (RoundData *roundData in self.data) {
+        if ([roundData.category isEqual:roundCategory]) {
+            return roundData;
+        }
+    }
+    return nil;
+}
 
 @end

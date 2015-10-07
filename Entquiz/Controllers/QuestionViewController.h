@@ -5,6 +5,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class Question;
+@class Answer;
 
-@interface QuestionViewController : NSObject
+
+@interface QuestionViewController : UIViewController
+
+- (id)initWithQuestion:(Question *)question;
+
+@property (nonatomic, copy) void (^onAnswerClick)(Answer *answer);
+
 @end

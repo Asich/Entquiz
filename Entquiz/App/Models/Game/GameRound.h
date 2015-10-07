@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 
 @class GameRoundCreatedAt;
+@class RoundData;
+@class RoundCategory;
 
 @interface GameRound : NSObject {
 
@@ -16,5 +18,8 @@
 
 + (GameRound *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+
+- (RoundData *)getRoundDataByRoundCategory:(RoundCategory *)roundCategory;
 
 @end
