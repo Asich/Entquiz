@@ -5,14 +5,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class RoundCategory;
+@class RoundData;
 
 
 @interface ChooseCategoryViewController : UIViewController
 
 - (id)initWithRoundData:(NSArray *)roundData;
 
-@property (nonatomic, copy) void (^onRoundCategoryClick)(RoundCategory *roundCategory);
+@property (nonatomic, copy) void (^onRoundCategoryClick)(RoundData *roundData);
 
 
 @end

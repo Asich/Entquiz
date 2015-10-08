@@ -43,8 +43,8 @@
 
 - (void)clickCategoryButton:(UIButton *)categoryButton {
     if (self.onRoundCategoryClick) {
-        RoundCategory *choosenRoundCategory = self.roundData[(NSUInteger) categoryButton.tag];
-        self.onRoundCategoryClick(choosenRoundCategory);
+        RoundData *choosenRoundData = self.roundData[(NSUInteger) categoryButton.tag];
+        self.onRoundCategoryClick(choosenRoundData);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

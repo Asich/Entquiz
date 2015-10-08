@@ -11,8 +11,6 @@
 
 @interface QuestionViewController : UIViewController
 
-- (id)initWithQuestion:(Question *)question;
-
-@property (nonatomic, copy) void (^onAnswerClick)(Answer *answer);
+- (id)initWithQuestion:(NSArray *)questions;
 
 @end
