@@ -8,11 +8,13 @@
 #import "QuestionViewController.h"
 #import "Question.h"
 #import "QuestionQues.h"
+#import "AnswerTimerView.h"
 #import "UIImageView+AFNetworking.h"
 #import "Answer.h"
 #import "UIButton+BackgroudForState.h"
 #import "NSObject+PWObject.h"
 #import "IQUIView+IQKeyboardToolbar.h"
+#import "AnswerTimerView.h"
 
 
 @interface QuestionViewController() {}
@@ -23,6 +25,7 @@
 @property (nonatomic, strong) Question *currentQuestion;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *questionContainer;
+@property(nonatomic, strong) AnswerTimerView *timerView;
 @end
 
 @implementation QuestionViewController {}
@@ -56,6 +59,7 @@
     //block button ui and show green background if right or red background if wrong answer
     //go to next question
     //
+    [wSelf.timerView stop];
     [self colorButton:answerButton accordingToSelectedAnswer:selectedAnswer];
     [self performBlock:^{
         [wSelf.questionContainer removeFromSuperview];
@@ -70,6 +74,14 @@
     } else {
         [answerButton setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
     }
+}
+
+- (void)timeEnd {
+    Answer *wrongAnswer = [[Answer alloc] init];
+    wrongAnswer.isTrue = NO;
+    [self.answeredQuestions addObject:wrongAnswer];
+    [self.questionContainer removeFromSuperview];
+    [self goToNextQuestion];
 }
 
 #pragma mark - config ui
@@ -185,6 +197,16 @@
     [button3 setTitle:answer2.title forState:UIControlStateNormal];
     [button4 setTitle:answer3.title forState:UIControlStateNormal];
 
+    self.timerView = [[AnswerTimerView alloc] init];
+    [self.questionContainer addSubview:self.timerView];
+    [self.timerView autoSetDimension:ALDimensionHeight toSize:40];
+    [self.timerView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button4];
+    [self.timerView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
+    [self.timerView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
+
+    [self.timerView startWithCompletion:^{
+        [self timeEnd];
+    }];
 }
 
 - (void)goToNextQuestion {

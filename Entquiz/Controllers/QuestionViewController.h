@@ -7,6 +7,7 @@
 
 @class Question;
 @class Answer;
+@class AnswerTimerView;
 
 
 @interface QuestionViewController : UIViewController

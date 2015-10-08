@@ -31,6 +31,7 @@
 		3C9DCA4E76B5326DC2382F56 /* ChooseCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC8F5B63D67FBE1BDA449 /* ChooseCategoryViewController.m */; };
 		3C9DCAAC190FEB66DC68F2C6 /* LocalJsonWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCD9F3B4AE2528DF7D936 /* LocalJsonWrapper.m */; };
 		3C9DCAB411DDAA53BAE748D0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC056E0E3A39CB2DC2B4C /* MainViewController.m */; };
+		3C9DCC8B09C17C57AB37E9F5 /* AnswerTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCE44BE452087BDE9145A /* AnswerTimerView.m */; };
 		3C9DCCB2C1ABDE6A2BAE10D2 /* UIViewController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC8DF4B141DE35E466BF5 /* UIViewController+Extensions.m */; };
 		3C9DCD5178F98A3640515D60 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC692516B0054E3D6C0CB /* StartGameViewController.m */; };
 		3C9DCE2E9613600B746FCF42 /* ScoreContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCC438A533A3E2E894E1D /* ScoreContainerView.m */; };
@@ -86,6 +87,7 @@
 		3C9DC53D7E1D383B1643332C /* RoundData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundData.h; sourceTree = "<group>"; };
 		3C9DC58B86C337E3399ED561 /* RoundResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundResultView.m; sourceTree = "<group>"; };
 		3C9DC5BC171431A32359C2EC /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		3C9DC5E1AD76FA4A0151F840 /* AnswerTimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTimerView.h; sourceTree = "<group>"; };
 		3C9DC5F390243CFF7D9B97D7 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
 		3C9DC605CA2C0735AA1EA865 /* PlayingGameManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingGameManagerViewController.h; sourceTree = "<group>"; };
 		3C9DC692516B0054E3D6C0CB /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		3C9DCD9F3B4AE2528DF7D936 /* LocalJsonWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalJsonWrapper.m; sourceTree = "<group>"; };
 		3C9DCDE09D35BFDAEBCB8ECC /* NewGameConfigureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameConfigureViewController.m; sourceTree = "<group>"; };
 		3C9DCE261861EC1FA80A6A45 /* Entquiz-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entquiz-Prefix.pch"; sourceTree = "<group>"; };
+		3C9DCE44BE452087BDE9145A /* AnswerTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTimerView.m; sourceTree = "<group>"; };
 		3C9DCEFFB8851E28B7D59D06 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		3C9DCF16ED334892F2A96EA0 /* AAForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAForm.h; sourceTree = "<group>"; };
 		3C9DCF3D94A63A5A9823C831 /* NewGameConfigureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameConfigureViewController.h; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 				3C9DC9F3A2CE2636A0B24904 /* RoundResultView.h */,
 				3C9DCC1DAD8B6CCC295B2875 /* ResultStatusContainerView.m */,
 				3C9DC41BBA623B81358622BB /* ResultStatusContainerView.h */,
+				3C9DCE44BE452087BDE9145A /* AnswerTimerView.m */,
+				3C9DC5E1AD76FA4A0151F840 /* AnswerTimerView.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 				3C9DCAAC190FEB66DC68F2C6 /* LocalJsonWrapper.m in Sources */,
 				3C9DC9B7F040B9B229633A22 /* PlayingGameManagerViewController.m in Sources */,
 				3C9DC1D31E9AA8CD133D3E6D /* NSObject+PWObject.m in Sources */,
+				3C9DCC8B09C17C57AB37E9F5 /* AnswerTimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
