@@ -7,6 +7,7 @@
 
 @synthesize answers;
 @synthesize ques;
+@synthesize opponentAnsweredId;
 
 + (Question *)instanceFromDictionary:(NSDictionary *)aDictionary {
 
@@ -41,6 +42,10 @@
             self.answers = myMembers;
 
         }
+
+    } else if ([key isEqualToString:@"opAns"]) {
+
+        [self setValue:value forKey:@"opponentAnsweredId"];
 
     } else if ([key isEqualToString:@"ques"]) {
 

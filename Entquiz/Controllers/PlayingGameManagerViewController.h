@@ -5,9 +5,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class GameRound;
+@class ScoreContainerView;
+
 
 @interface PlayingGameManagerViewController : UIViewController
 
 - (void)startGame;
+
 
 @end

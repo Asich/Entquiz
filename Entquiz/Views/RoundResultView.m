@@ -11,6 +11,8 @@
 @interface RoundResultView() {}
 @property (nonatomic, assign) NSInteger roundNumber;
 @property (nonatomic, strong) NSString *categoryName;
+@property(nonatomic, strong) ResultStatusContainerView *playerResultContainer;
+@property(nonatomic, strong) ResultStatusContainerView *opponentResultContainer;
 @end
 
 @implementation RoundResultView {}
@@ -26,6 +28,25 @@
     }
     return self;
 }
+
+#pragma mark - set/get
+
+- (void)setPlayerAnswerRight {
+    [self.playerResultContainer addAnswerSuccess];
+}
+
+- (void)setPlayerAnswerFalse {
+    [self.playerResultContainer addAnswerFailure];
+}
+
+- (void)setOpponentAnswerRight {
+    [self.opponentResultContainer addAnswerSuccess];
+}
+
+- (void)setOpponentAnswerFalse {
+    [self.opponentResultContainer addAnswerFailure];
+}
+
 
 #pragma mark - config ui
 
@@ -50,10 +71,10 @@
     categoryNameLabel.text = self.categoryName;
     [centerContainer addSubview:categoryNameLabel];
 
-    ResultStatusContainerView *playerResultContainer = [[ResultStatusContainerView alloc] initWithMaxAnswers:@""];
-    ResultStatusContainerView *opponentResultContainer = [[ResultStatusContainerView alloc] initWithMaxAnswers:@""];
-    [self addSubview:playerResultContainer];
-    [self addSubview:opponentResultContainer];
+    self.playerResultContainer = [[ResultStatusContainerView alloc] initWithMaxAnswers:@""];
+    self.opponentResultContainer = [[ResultStatusContainerView alloc] initWithMaxAnswers:@""];
+    [self addSubview:self.playerResultContainer];
+    [self addSubview:self.opponentResultContainer];
 
 
 
@@ -78,18 +99,11 @@
     [categoryNameLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
 
     //player and opponent containers
-    [playerResultContainer autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:centerContainer withOffset:-10];
-    [playerResultContainer autoPinEdgeToSuperviewEdge:ALEdgeTop];
-    [opponentResultContainer autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:centerContainer withOffset:10];
-    [opponentResultContainer autoPinEdgeToSuperviewEdge:ALEdgeTop];
+    [self.playerResultContainer autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:centerContainer withOffset:-10];
+    [self.playerResultContainer autoPinEdgeToSuperviewEdge:ALEdgeTop];
+    [self.opponentResultContainer autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:centerContainer withOffset:10];
+    [self.opponentResultContainer autoPinEdgeToSuperviewEdge:ALEdgeTop];
 
-
-    //just for testing scores
-    [playerResultContainer addAnswerFailure];
-    [playerResultContainer addAnswerSuccess];
-    [opponentResultContainer addAnswerFailure];
-    [opponentResultContainer addAnswerFailure];
-    [opponentResultContainer addAnswerSuccess];
 
 }
 

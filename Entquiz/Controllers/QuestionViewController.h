@@ -14,4 +14,6 @@
 
 - (id)initWithQuestion:(NSArray *)questions;
 
+@property (nonatomic, copy) void (^onAllQuestionsAnswered)(NSArray *answeredQuestions);
+
 @end

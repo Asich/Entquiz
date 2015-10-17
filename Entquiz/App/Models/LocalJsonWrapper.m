@@ -18,7 +18,9 @@
 }
 
 + (GameRound *)gameWithLocalJson {
-    GameRound *game = [GameRound instanceFromDictionary:[self parseLocalJSON:@"game"]];
+    //NSString *name = @"game";
+    NSString *name = @"startedgame";
+    GameRound *game = [GameRound instanceFromDictionary:[self parseLocalJSON:name]];
     return game;
 }
 

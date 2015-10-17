@@ -1,13 +1,17 @@
 #import "GameRound.h"
+
+#import "GameRoundUser.h"
 #import "RoundData.h"
-#import "GameRoundCreatedAt.h"
-#import "RoundCategory.h"
 
 @implementation GameRound
 
-@synthesize createdAt;
 @synthesize data;
-@synthesize userOneId;
+@synthesize gameId;
+@synthesize scoreOne;
+@synthesize scoreTwo;
+@synthesize user;
+@synthesize opponent;
+@synthesize roundId;
 
 + (GameRound *)instanceFromDictionary:(NSDictionary *)aDictionary {
 
@@ -29,13 +33,7 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key {
 
-    if ([key isEqualToString:@"createdAt"]) {
-
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.createdAt = [GameRoundCreatedAt instanceFromDictionary:value];
-        }
-
-    } else if ([key isEqualToString:@"data"]) {
+    if ([key isEqualToString:@"data"]) {
 
         if ([value isKindOfClass:[NSArray class]]) {
 
@@ -49,21 +47,24 @@
 
         }
 
+    } else if ([key isEqualToString:@"user"]) {
+
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            self.user = [GameRoundUser instanceFromDictionary:value];
+        }
+
+    } else if ([key isEqualToString:@"opponent"]) {
+
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            self.opponent = [GameRoundUser instanceFromDictionary:value];
+        }
+
     } else {
         [super setValue:value forKey:key];
     }
 
 }
 
-#pragma mark -
 
-- (RoundData *)getRoundDataByRoundCategory:(RoundCategory *)roundCategory {
-    for (RoundData *roundData in self.data) {
-        if ([roundData.category isEqual:roundCategory]) {
-            return roundData;
-        }
-    }
-    return nil;
-}
 
 @end

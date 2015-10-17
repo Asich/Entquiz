@@ -1,25 +1,28 @@
 #import <Foundation/Foundation.h>
 
-@class GameRoundCreatedAt;
-@class RoundData;
-@class RoundCategory;
+@class GameRoundUser;
 
 @interface GameRound : NSObject {
 
-    GameRoundCreatedAt *createdAt;
     NSArray *data;
-    NSNumber *userOneId;
+    NSNumber *roundId;
+    NSNumber *gameId;
+    NSNumber *scoreOne;
+    NSNumber *scoreTwo;
+    GameRoundUser *user;
+    GameRoundUser *opponent;
 
 }
 
-@property (nonatomic, strong) GameRoundCreatedAt *createdAt;
 @property (nonatomic, copy) NSArray *data;
-@property (nonatomic, copy) NSNumber *userOneId;
+@property (nonatomic, strong) NSNumber *roundId;
+@property (nonatomic, copy) NSNumber *gameId;
+@property (nonatomic, copy) NSNumber *scoreOne;
+@property (nonatomic, copy) NSNumber *scoreTwo;
+@property (nonatomic, strong) GameRoundUser *user;
+@property (nonatomic, strong) GameRoundUser *opponent;
 
 + (GameRound *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
-
-
-- (RoundData *)getRoundDataByRoundCategory:(RoundCategory *)roundCategory;
 
 @end

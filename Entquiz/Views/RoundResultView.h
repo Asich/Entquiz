@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ResultStatusContainerView;
+
 
 @interface RoundResultView : UIView
 

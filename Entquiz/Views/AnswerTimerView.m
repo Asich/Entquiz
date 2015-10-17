@@ -5,7 +5,6 @@
 
 #import <PureLayout/ALView+PureLayout.h>
 #import "AnswerTimerView.h"
-#import "NSObject+PWObject.h"
 
 
 @interface AnswerTimerView ()
@@ -40,7 +39,7 @@
 }
 
 - (void)startWithCompletion:(void (^)())completionBlock {
-    [UIView animateWithDuration:20 animations:^{
+    [UIView animateWithDuration:60 animations:^{
         [self.timerSlider setValue:1 animated:YES];
     } completion:^(BOOL finished) {
         if (finished) {

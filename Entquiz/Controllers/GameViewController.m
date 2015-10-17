@@ -42,35 +42,7 @@
 
 - (void)configUI {
 
-    UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.alwaysBounceVertical = YES;
-    scrollView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:scrollView];
-    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
-    [scrollView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
 
-
-    ScoreContainerView *scoreContainerView = [[ScoreContainerView alloc] initWithPlayerName:@"Asich" opponentName:@"Mura"];
-    [scrollView addSubview:scoreContainerView];
-
-    [scoreContainerView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:50];
-    [scoreContainerView autoAlignAxisToSuperviewAxis:ALAxisVertical];
-
-
-    //Round 1
-    RoundResultView *roundResultView1 = [[RoundResultView alloc] initWithRoundNumber:1 categoryName:@"История Казахстана"];
-    [scrollView addSubview:roundResultView1];
-    [roundResultView1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:scoreContainerView withOffset:5];
-    [roundResultView1 autoAlignAxisToSuperviewAxis:ALAxisVertical];
-
-
-    RoundResultView *roundResultView2 = [[RoundResultView alloc] initWithRoundNumber:2 categoryName:@"Английский язык"];
-    [scrollView addSubview:roundResultView2];
-    [roundResultView2 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:roundResultView1 withOffset:5];
-    [roundResultView2 autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [roundResultView2 autoPinEdgeToSuperviewEdge:ALEdgeBottom];
 
 }
 

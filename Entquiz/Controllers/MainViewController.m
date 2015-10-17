@@ -9,6 +9,8 @@
 #import "User.h"
 #import "StatisticsViewController.h"
 #import "SettingsViewController.h"
+#import "GameApi.h"
+#import "NSObject+Json.h"
 
 #define kSettingsButtonTitle @"Settings"
 #define kStatisticsButtonTitle @"Statistics"
@@ -29,6 +31,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configUI];
+
+    NSLog(@"user token %@", [User sharedInstance].accessToken);
+
+//    NSDictionary *params = @{
+//            @"gameId" : @36,
+//            @"roundNum" : @1,
+//            @"catId" : @8,
+//            @"q1Id" : @54,
+//            @"q2Id" : @55,
+//            @"q3Id" : @56,
+//            @"a1Id" : @71,
+//            @"a2Id" : @80,
+//            @"a3Id" : @87
+//    };
+//    [GameApi submitRoundWithParams:params success:^(id response) {
+//        NSLog(@"response: %@", response);
+//    } failure:^(NSInteger code, NSString *message) {
+//        NSLog(@"failure: %@", message);
+//    }];
 }
 
 #pragma mark - config actions

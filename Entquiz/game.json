@@ -1,374 +1,443 @@
 {
-  "userOneId": 1,
-  "createdAt": {
-    "timestamp": 1443705220415
-  },
-  "data": [
+  "gameId" : 36,
+  "scoreTwo" : 0,
+  "roundId" : 1,
+  "data" : [
     {
-      "category": {
-        "id": 4,
-        "name": "Russian"
+      "category" : {
+        "id" : 8,
+        "name" : "Русский язык"
       },
-      "questions": [
+      "questions" : [
         {
-          "ques": {
-            "id": 12,
-            "title": "dhfy",
-            "catId": 4,
-            "img": ""
+          "ques" : {
+            "catId" : 8,
+            "id" : 54,
+            "title" : "Двоеточие, две запятые и тире пропущены в предложении",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 12,
-              "img": ""
+              "id" : 71,
+              "title" : "Зеленая долина горы в белых шапках все было залито солнцем. (В. Шукшин)",
+              "isTrue" : false,
+              "quesId" : 54,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 12,
-              "img": ""
+              "id" : 73,
+              "title" : "Везде на полях и на лесных просеках и на дорожках пар поднимался от земли. (М. Пришвин)",
+              "isTrue" : true,
+              "quesId" : 54,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 12,
-              "img": ""
+              "id" : 70,
+              "title" : "Обращаться с языком кое-как значит и мыслить кое-как неточно приблизительно неверно. (А. Н. Толстой)",
+              "isTrue" : false,
+              "quesId" : 54,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "CHETIRE",
-              "isTrue": false,
-              "quesId": 12,
-              "img": ""
+              "id" : 72,
+              "title" : "Все это и ночь и дали и горы и звезды и туманы казалось мне исполненным невиданной прелести. (В. Короленко)",
+              "isTrue" : false,
+              "quesId" : 54,
+              "img" : ""
+            },
+            {
+              "id" : 69,
+              "title" : "В пруду развели разную рыбу как-то карпов сазанов лещей.",
+              "isTrue" : false,
+              "quesId" : 54,
+              "img" : ""
             }
           ]
         },
         {
-          "ques": {
-            "id": 9,
-            "title": "KOKOKOKO",
-            "catId": 4,
-            "img": ""
+          "ques" : {
+            "catId" : 8,
+            "id" : 55,
+            "title" : "Предложение с однородными сказуемыми:",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 9,
-              "img": ""
+              "id" : 80,
+              "title" : "Кругом были пни, да корявые стволы, да поросль. (С. Антонов)",
+              "isTrue" : false,
+              "quesId" : 55,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 9,
-              "img": ""
+              "id" : 82,
+              "title" : "Ни близких берегов, ни далеких гор, ни даже воды – ничего не было видно. (В. Солоухин)",
+              "isTrue" : false,
+              "quesId" : 55,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 9,
-              "img": ""
+              "id" : 79,
+              "title" : "Ученье без уменья не польза, а беда. (Пословица)",
+              "isTrue" : true,
+              "quesId" : 55,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 81,
+              "title" : "Дремали не только леса, но и лесные озера и ленивые лесные реки с пресной водой. (К. Паустовский)",
+              "isTrue" : false,
+              "quesId" : 55,
+              "img" : ""
+            },
+            {
+              "id" : 83,
+              "title" : "В человеке должно быть все прекрасно: и лицо, и одежда, и душа, и мысли. (А. П. Чехов)",
+              "isTrue" : false,
+              "quesId" : 55,
+              "img" : ""
             }
           ]
         },
         {
-          "ques": {
-            "id": 10,
-            "title": "sdgag",
-            "catId": 4,
-            "img": ""
+          "ques" : {
+            "catId" : 8,
+            "id" : 56,
+            "title" : "Предложение с однородными подлежащими и обобщающим словом при них:",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 10,
-              "img": ""
+              "id" : 87,
+              "title" : "Ни близких берегов, ни далеких гор, ни даже воды – ничего не было видно. (В. Солоухин)",
+              "isTrue" : false,
+              "quesId" : 56,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 10,
-              "img": ""
+              "id" : 84,
+              "title" : " Ученье без уменья не польза, а беда. (Пословица)",
+              "isTrue" : false,
+              "quesId" : 56,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 10,
-              "img": ""
+              "id" : 86,
+              "title" : "Дремали не только леса, но и лесные озера и ленивые лесные реки с пресной водой. (К. Паустовский)",
+              "isTrue" : false,
+              "quesId" : 56,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 88,
+              "title" : "В человеке должно быть все прекрасно: и лицо, и одежда, и душа, и мысли. (А. П. Чехов)",
+              "isTrue" : true,
+              "quesId" : 56,
+              "img" : ""
+            },
+            {
+              "id" : 85,
+              "title" : "Кругом были пни, да корявые стволы, да поросль. (С. Антонов)",
+              "isTrue" : false,
+              "quesId" : 56,
+              "img" : ""
             }
           ]
         }
       ]
     },
     {
-      "category": {
-        "id": 1,
-        "name": "Math"
+      "category" : {
+        "id" : 11,
+        "name" : "Всемирная История"
       },
-      "questions": [
+      "questions" : [
         {
-          "ques": {
-            "id": 26,
-            "title": "Privetaeat",
-            "catId": 1,
-            "img": ""
+          "ques" : {
+            "catId" : 11,
+            "id" : 53,
+            "title" : "«Золотая булла» была издана Карлом IV в:",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 26,
-              "img": ""
+              "id" : 75,
+              "title" : "1389 г.",
+              "isTrue" : false,
+              "quesId" : 53,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 26,
-              "img": ""
+              "id" : 77,
+              "title" : "1378 г.",
+              "isTrue" : true,
+              "quesId" : 53,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 26,
-              "img": ""
+              "id" : 74,
+              "title" : " 1356 г.",
+              "isTrue" : false,
+              "quesId" : 53,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 76,
+              "title" : "1354 г.",
+              "isTrue" : false,
+              "quesId" : 53,
+              "img" : ""
+            },
+            {
+              "id" : 78,
+              "title" : "1350 г.",
+              "isTrue" : false,
+              "quesId" : 53,
+              "img" : ""
             }
           ]
         },
         {
-          "ques": {
-            "id": 42,
-            "title": "ФЫП",
-            "catId": 1,
-            "img": ""
+          "ques" : {
+            "catId" : 11,
+            "id" : 52,
+            "title" : "«Декларация независимости» США была принята в:",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 42,
-              "img": ""
+              "id" : 64,
+              "title" : "1793 г.",
+              "isTrue" : false,
+              "quesId" : 52,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 42,
-              "img": ""
+              "id" : 66,
+              "title" : "1787 г.",
+              "isTrue" : false,
+              "quesId" : 52,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 42,
-              "img": ""
+              "id" : 68,
+              "title" : " 1791 г.",
+              "isTrue" : true,
+              "quesId" : 52,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 65,
+              "title" : "1786 г.",
+              "isTrue" : false,
+              "quesId" : 52,
+              "img" : ""
+            },
+            {
+              "id" : 67,
+              "title" : "1776г.",
+              "isTrue" : false,
+              "quesId" : 52,
+              "img" : ""
             }
           ]
         },
         {
-          "ques": {
-            "id": 11,
-            "title": "sgdthdthdth",
-            "catId": 1,
-            "img": ""
+          "ques" : {
+            "catId" : 11,
+            "id" : 51,
+            "title" : "«Велика Россия, а отступать некуда: позади — Москва!» — эти легендарные слова принадлежат:",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 11,
-              "img": ""
+              "id" : 59,
+              "title" : "В.Ф. Храпатию.",
+              "isTrue" : false,
+              "quesId" : 51,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 11,
-              "img": ""
+              "id" : 61,
+              "title" : "И.В. Сталину.",
+              "isTrue" : true,
+              "quesId" : 51,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 11,
-              "img": ""
+              "id" : 63,
+              "title" : "Г.К. Жукову.",
+              "isTrue" : false,
+              "quesId" : 51,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 60,
+              "title" : "В.Г. Клочкову.",
+              "isTrue" : false,
+              "quesId" : 51,
+              "img" : ""
+            },
+            {
+              "id" : 62,
+              "title" : "Д.Г. Павлову.",
+              "isTrue" : false,
+              "quesId" : 51,
+              "img" : ""
             }
           ]
         }
       ]
     },
     {
-      "category": {
-        "id": 6,
-        "name": "Physics"
+      "category" : {
+        "id" : 13,
+        "name" : "География"
       },
-      "questions": [
+      "questions" : [
         {
-          "ques": {
-            "id": 36,
-            "title": "gsdgsdg",
-            "catId": 6,
-            "img": ""
+          "ques" : {
+            "catId" : 13,
+            "id" : 68,
+            "title" : "Приведенные ниже термины: барометр, бриз, муссон – относятся к оболочке",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 36,
-              "img": ""
+              "id" : 144,
+              "title" : "биосфера",
+              "isTrue" : false,
+              "quesId" : 68,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 36,
-              "img": ""
+              "id" : 146,
+              "title" : "неосфера",
+              "isTrue" : false,
+              "quesId" : 68,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 36,
-              "img": ""
+              "id" : 148,
+              "title" : "атмосфера",
+              "isTrue" : false,
+              "quesId" : 68,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 145,
+              "title" : "гидросфера",
+              "isTrue" : true,
+              "quesId" : 68,
+              "img" : ""
+            },
+            {
+              "id" : 147,
+              "title" : "литосфера",
+              "isTrue" : false,
+              "quesId" : 68,
+              "img" : ""
             }
           ]
         },
         {
-          "ques": {
-            "id": 37,
-            "title": "GOGOGO",
-            "catId": 6,
-            "img": ""
+          "ques" : {
+            "catId" : 13,
+            "id" : 63,
+            "title" : "Понятие о целостности Мирового океана утвердилось после путешествия",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 22,
-              "title": "ODIN",
-              "isTrue": true,
-              "quesId": 37,
-              "img": ""
+              "id" : 119,
+              "title" : "Ф. Магеллана",
+              "isTrue" : false,
+              "quesId" : 63,
+              "img" : ""
             },
             {
-              "id": 23,
-              "title": "TRI",
-              "isTrue": false,
-              "quesId": 37,
-              "img": ""
+              "id" : 121,
+              "title" : "Д. Кука",
+              "isTrue" : false,
+              "quesId" : 63,
+              "img" : ""
             },
             {
-              "id": 24,
-              "title": "DVA",
-              "isTrue": false,
-              "quesId": 37,
-              "img": ""
+              "id" : 123,
+              "title" : "Х. Колумба",
+              "isTrue" : false,
+              "quesId" : 63,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 120,
+              "title" : "Абеля Тасмана",
+              "isTrue" : true,
+              "quesId" : 63,
+              "img" : ""
+            },
+            {
+              "id" : 122,
+              "title" : "Васко да Гамы",
+              "isTrue" : false,
+              "quesId" : 63,
+              "img" : ""
             }
           ]
         },
         {
-          "ques": {
-            "id": 38,
-            "title": "Привет",
-            "catId": 6,
-            "img": ""
+          "ques" : {
+            "catId" : 13,
+            "id" : 66,
+            "title" : "Масштаб записанный с пояснением ( например в 1 см – 100 м) называется",
+            "img" : ""
           },
-          "answers": [
+          "answers" : [
             {
-              "id": 28,
-              "title": "???",
-              "isTrue": true,
-              "quesId": 38,
-              "img": ""
+              "id" : 135,
+              "title" : " Сложным",
+              "isTrue" : true,
+              "quesId" : 66,
+              "img" : ""
             },
             {
-              "id": 29,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 137,
+              "title" : "Именованным",
+              "isTrue" : false,
+              "quesId" : 66,
+              "img" : ""
             },
             {
-              "id": 30,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 134,
+              "title" : "Численным",
+              "isTrue" : false,
+              "quesId" : 66,
+              "img" : ""
             },
             {
-              "id": 31,
-              "title": "?????",
-              "isTrue": false,
-              "quesId": 38,
-              "img": ""
+              "id" : 136,
+              "title" : "Цифровым",
+              "isTrue" : false,
+              "quesId" : 66,
+              "img" : ""
+            },
+            {
+              "id" : 138,
+              "title" : "Линейным",
+              "isTrue" : false,
+              "quesId" : 66,
+              "img" : ""
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "scoreOne" : 0,
+  "user" : {
+    "username" : "askar",
+    "id" : 3,
+    "password" : "",
+    "rating" : 1200
+  }
 }

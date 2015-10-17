@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 askar. All rights reserved.
 //
 
-#define kAPIBaseURLString @"http://bitvazagrant.kz"
+//#define kAPIBaseURLString @"http://bitvazagrant.kz"
+#define kAPIBaseURLString @"http://95.57.223.75"
+
 
 #import "ApiClient.h"
 

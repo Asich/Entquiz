@@ -11,7 +11,6 @@
 #import "AuthApi.h"
 #import "SVProgressHUD.h"
 #import "User.h"
-#import "UIWebView+AFNetworking.h"
 #import "SecurityTokenManager.h"
 
 #define kUserNameTextFieldPlaceholder @"Логин"
@@ -57,13 +56,16 @@
 
                 [User sharedInstance].userName = self.userNameTextField.text;
                 [User sharedInstance].accessToken = response[@"token"];
+                [User sharedInstance].userId = response[@"userId"];
 
                 //For token based authentication
                 //save userName to userDefaults
                 [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"userName"];
+                [[NSUserDefaults standardUserDefaults] setObject:response[@"userId"] forKey:@"userId"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 //save secure token for name
                 [[SecurityTokenManager sharedManager] writeToken:response[@"token"] userName:self.userNameTextField.text];
+
 
                 [wSelf gotoMainViewController];
             }

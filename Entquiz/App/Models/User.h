@@ -10,6 +10,7 @@
 
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSString *userId;
 
 + (instancetype)sharedInstance;
 

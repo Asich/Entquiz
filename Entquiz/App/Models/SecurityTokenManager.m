@@ -22,7 +22,7 @@
 #pragma mark -
 
 - (void)writeToken:(NSString *)token userName:(NSString *)userName {
-    [SSKeychain setPassword:@"token"
+    [SSKeychain setPassword:token
                  forService:kService
                     account:userName];
 }

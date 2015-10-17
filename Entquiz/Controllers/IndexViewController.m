@@ -39,10 +39,14 @@
     //todo do authentication with token
 
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
+
     if (userName) {
         NSString *secureToken = [[SecurityTokenManager sharedManager] readTokenForUserName:userName];
         [User sharedInstance].accessToken = secureToken;
         [User sharedInstance].userName = userName;
+        [User sharedInstance].userId = userId;
+
         if (secureToken) {
             MainViewController *mainViewController = [[MainViewController alloc] init];
             [self.navigationController pushViewController:mainViewController animated:YES];
