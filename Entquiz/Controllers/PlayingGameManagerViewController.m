@@ -106,14 +106,9 @@
 
 
 /**
+*  Add RoundResultView into ScoreContainerView
+*  AFTER PLAYER ANSWERS THE QUESTIONS
 *
-*  TODO: VERY IMPORTANT METHOD
-*
-*  ADD RoundResultView INTO ScoreContainerView
-*  ANTER PLAYER ANSWERS THE QUESTIONS
-*
-*
-*  TODO: ADD SCORE
 */
 
 - (void)showQuestionWithRoundData:(RoundData *)roundData {
@@ -122,9 +117,10 @@
     QuestionViewController *questionViewController = [[QuestionViewController alloc] initWithQuestion:roundData.questions];
     questionViewController.onAllQuestionsAnswered = ^(NSArray *answers) {
 
-        //todo: draw oppponent score
+        //todo: set ждем
         [wSelf addRoundResultViewWithCategory:roundData.category andAnswers:answers];
         [wSelf submitRoundWithRoundData:roundData andAnswers:answers];
+
 
     };
     [wSelf.navigationController pushViewController:questionViewController animated:YES];
@@ -157,6 +153,8 @@
     }];
 }
 
+
+//todo: draw opponent answers when opponent ends round
 
 - (void)refreshTable {
     [self.refreshControl endRefreshing];
@@ -244,7 +242,7 @@
 
 - (void)addRoundResultViewWithCategory:(RoundCategory *)roundCategory andAnswers:(NSArray *)answers {
 
-    RoundResultView *roundResultView1 = [[RoundResultView alloc] initWithRoundNumber:1 categoryName:roundCategory.name];
+    RoundResultView *roundResultView1 = [[RoundResultView alloc] initWithRoundNumber:self.roundResultViews.count + 1 categoryName:roundCategory.name];
     [self.scrollView addSubview:roundResultView1];
 
 
@@ -266,6 +264,9 @@
         NSArray *questions = roundData.questions;
         for (Question *question in questions) {
             Answer *opponentAnswer = [question getAnswerById:question.opponentAnsweredId];
+
+            NSLog(@"opponent answer title: %@", opponentAnswer.title);
+
             if (opponentAnswer.isTrue) {
                 [roundResultView1 setOpponentAnswerRight];
             } else {
@@ -283,6 +284,8 @@
         [roundResultView1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.scoreContainerView withOffset:5];
     }
     [roundResultView1 autoAlignAxisToSuperviewAxis:ALAxisVertical];
+
+
 
     [self.roundResultViews addObject:roundResultView1];
 }
