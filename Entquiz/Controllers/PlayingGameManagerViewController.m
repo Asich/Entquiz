@@ -7,7 +7,6 @@
 #import <PureLayout/ALView+PureLayout.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "PlayingGameManagerViewController.h"
-#import "LocalJsonWrapper.h"
 #import "ScoreContainerView.h"
 #import "GameRound.h"
 #import "ChooseCategoryViewController.h"
@@ -19,6 +18,7 @@
 #import "RoundCategory.h"
 #import "GameApi.h"
 #import "NSObject+Json.h"
+#import "Question.h"
 
 
 @interface PlayingGameManagerViewController() {}
@@ -27,8 +27,8 @@
 @property (nonatomic, strong) ScoreContainerView *scoreContainerView;
 @property (nonatomic, strong) NSMutableArray *roundResultViews;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIButton *statusButton;
 @end
-
 
 
 @implementation PlayingGameManagerViewController {}
@@ -63,14 +63,6 @@
 - (void)startGame {
     __weak PlayingGameManagerViewController *wSelf = self;
 
-
-    //todo: startGame method api
-    //
-    //
-    //self.gameRound = [LocalJsonWrapper gameWithLocalJson];
-
-
-
     [SVProgressHUD show];
     [GameApi startWithSuccess:^(id response) {
 
@@ -78,26 +70,35 @@
 
         self.gameRound = [GameRound instanceFromDictionary:response];
 
-        [self buildResultVies];
+        [self buildScoreContainerView];
 
 
         //if gameRound has no opponent yet
         //choose category
         //and then answer on 3 questions
+        //if gameRound has opponent
+        //show question to answer
         if (!self.gameRound.opponent) {
+
             ChooseCategoryViewController *vc = [[ChooseCategoryViewController alloc] initWithRoundData:self.gameRound.data];
             [self presentViewController:vc animated:YES completion:nil];
             vc.onRoundCategoryClick = ^(RoundData *roundData) {
                 [wSelf showQuestionWithRoundData:roundData];
             };
+
         } else {
+
             [self showQuestionWithRoundData:self.gameRound.data[0]];
+
         }
 
 
 
         [SVProgressHUD dismiss];
     } failure:^(NSInteger code, NSString *message) {
+
+        NSLog(@"start game failure message: %@", message);
+
         [SVProgressHUD dismiss];
     }];
 
@@ -156,9 +157,6 @@
     }];
 }
 
-- (void)clickStatusButton {
-
-}
 
 - (void)refreshTable {
     [self.refreshControl endRefreshing];
@@ -166,14 +164,35 @@
     [GameApi getRoundDataWithGameId:self.gameRound.gameId success:^(id response) {
         NSLog(@"getRoundData: %@", [response JSONRepresentationPretyPrinted:YES]);
 
-        GameRound *gameRound1 = [GameRound instanceFromDictionary:response];
+        self.gameRound = [GameRound instanceFromDictionary:response];
 
-        if (r)
+
+        if (self.gameRound.data.count > 0) {
+            [self.statusButton setTitle:@"Играть" forState:UIControlStateNormal];
+        } else {
+            [self.statusButton setTitle:@"Ждем" forState:UIControlStateNormal];
+        }
 
 
     } failure:^(NSInteger code, NSString *message) {
         NSLog(@"failure: %@", message);
     }];
+}
+
+- (void)clickStatusButton {
+    __weak PlayingGameManagerViewController *wSelf = self;
+
+    if (self.gameRound.data.count == 1) {
+        [self showQuestionWithRoundData:self.gameRound.data[0]];
+    } else if (self.gameRound.data.count > 1) {
+        ChooseCategoryViewController *vc = [[ChooseCategoryViewController alloc] initWithRoundData:self.gameRound.data];
+        [self presentViewController:vc animated:YES completion:nil];
+        vc.onRoundCategoryClick = ^(RoundData *roundData) {
+            [wSelf showQuestionWithRoundData:roundData];
+        };
+    } else {
+
+    }
 }
 
 
@@ -189,7 +208,7 @@
 
     self.scrollView = [[UIScrollView alloc] init];
     self.scrollView.alwaysBounceVertical = YES;
-    self.scrollView.backgroundColor = [UIColor whiteColor];
+    self.scrollView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:self.scrollView];
     [self.scrollView autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [self.scrollView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
@@ -197,13 +216,12 @@
     [self.scrollView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
 
 
-    UIButton *statusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [statusButton setTitle:@"Ждем" forState:UIControlStateNormal];
-    [statusButton addTarget:self action:@selector(clickStatusButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.scrollView addSubview:statusButton];
-    [statusButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:10];
-    [statusButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
-
+    self.statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.statusButton setTitle:@"Ждем" forState:UIControlStateNormal];
+    [self.statusButton addTarget:self action:@selector(clickStatusButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.statusButton];
+    [self.statusButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
+    [self.statusButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
 
 
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -213,7 +231,7 @@
 }
 
 
-- (void)buildResultVies {
+- (void)buildScoreContainerView {
 
     self.scoreContainerView = [[ScoreContainerView alloc] initWithPlayerName:self.gameRound.user.username opponentName:self.gameRound.opponent ? self.gameRound.opponent.username : @"-"];
     [self.scrollView addSubview:self.scoreContainerView];
@@ -229,11 +247,30 @@
     RoundResultView *roundResultView1 = [[RoundResultView alloc] initWithRoundNumber:1 categoryName:roundCategory.name];
     [self.scrollView addSubview:roundResultView1];
 
+
+    //fill round view with user results
     for (Answer *answer in answers) {
         if (answer.isTrue) {
             [roundResultView1 setPlayerAnswerRight];
         } else {
             [roundResultView1 setPlayerAnswerFalse];
+        }
+    }
+
+
+    //if gameRound data has only one category
+    //this means that current round is user's turn
+    //so fill round view with opponents results
+    if (self.gameRound.data.count == 1) {
+        RoundData *roundData = self.gameRound.data[0];
+        NSArray *questions = roundData.questions;
+        for (Question *question in questions) {
+            Answer *opponentAnswer = [question getAnswerById:question.opponentAnsweredId];
+            if (opponentAnswer.isTrue) {
+                [roundResultView1 setOpponentAnswerRight];
+            } else {
+                [roundResultView1 setOpponentAnswerFalse];
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
 @class QuestionQues;
+@class Answer;
 
 @interface Question : NSObject {
 
@@ -16,5 +17,7 @@
 
 + (Question *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+- (Answer *)getAnswerById:(NSNumber *)answerId;
 
 @end

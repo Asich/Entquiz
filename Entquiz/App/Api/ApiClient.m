@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 askar. All rights reserved.
 //
 
-//#define kAPIBaseURLString @"http://bitvazagrant.kz"
-#define kAPIBaseURLString @"http://95.57.223.75"
+#define kAPIBaseURLString @"http://bitvazagrant.kz"
+//#define kAPIBaseURLString @"http://95.57.223.75"
 
 
 #import "ApiClient.h"
@@ -52,7 +52,6 @@
 
 + (NSString *)apiUrlWithPath:(NSString *)path {
     NSString *url = [NSString stringWithFormat:@"%@%@", kAPIBaseURLString, path];
-    NSLog(@"api: %@", url);
     return url;
 }
 

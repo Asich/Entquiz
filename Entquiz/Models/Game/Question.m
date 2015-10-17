@@ -60,5 +60,17 @@
 }
 
 
+- (Answer *)getAnswerById:(NSNumber *)answerId {
+    for (Answer *answer in self.answers) {
+        if ([answer.answerId isEqualToNumber:answerId]) {
+            return answer;
+        } else {
+            return nil;
+        }
+    }
+    return nil;
+}
+
+
 
 @end
