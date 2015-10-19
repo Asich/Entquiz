@@ -11,6 +11,10 @@
 #import "SettingsViewController.h"
 #import "GameApi.h"
 #import "NSObject+Json.h"
+#import "UIButton+EntStyle.h"
+#import "UIFont+Extension.h"
+#import "UIViewController+Extensions.h"
+#import "UIColor+Extensions.h"
 
 #define kSettingsButtonTitle @"Settings"
 #define kStatisticsButtonTitle @"Statistics"
@@ -72,18 +76,20 @@
 #pragma mark - config ui
 
 - (void)configUI {
-    //right button statistics
-    //left button settings
-    //profile info : name, ava
-    //new game button
-    //history
-
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self addDefaultBackground];
 
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:kSettingsButtonTitle style:UIBarButtonItemStylePlain target:self action:@selector(showSettings)];
+//    [settingsButton setTitleTextAttributes:@{
+//            NSFontAttributeName: [UIFont entMediumFontWithSize:13],
+//            NSForegroundColorAttributeName: [UIColor entGreenColor]
+//    } forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = settingsButton;
     
     UIBarButtonItem *statisticsButton = [[UIBarButtonItem alloc] initWithTitle:kStatisticsButtonTitle style:UIBarButtonItemStylePlain target:self action:@selector(showStatistics)];
+//    [statisticsButton setTitleTextAttributes:@{
+//            NSFontAttributeName: [UIFont entMediumFontWithSize:13],
+//            NSForegroundColorAttributeName: [UIColor entGreenColor]
+//    } forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = statisticsButton;
     
 
@@ -95,11 +101,13 @@
     AAForm *form = [[AAForm alloc] initWithScrollView:scrollView];
 
     UILabel *userName = [[UILabel alloc] init];
+    userName.font = [UIFont entMediumFontWithSize:13];
     userName.text = [NSString stringWithFormat:@"Вы в сети как %@", [User sharedInstance].userName];
     [userName sizeToFit];
     [form pushView:userName marginLeft:15 marginTop:50];
     
-    UIButton *newGameButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *newGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [newGameButton applyEntStyleGreen];
     [newGameButton setTitle:kNewGameButtonTitle forState:UIControlStateNormal];
     [newGameButton addTarget:self action:@selector(startNewGame) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:newGameButton marginTop:150 centered:YES];

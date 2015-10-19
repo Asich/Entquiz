@@ -42,5 +42,17 @@
     return [UIColor fromRGB:0xC4CED3];
 }
 
++ (UIColor *)entGreenColor {
+    return [UIColor fromRGB:0x00A562];
+}
+
++ (UIColor *)entGrayColor {
+    return [UIColor fromRGB:0x505356];
+}
+
++ (UIColor *)entRedColor {
+    return [UIColor fromRGB:0xC62426];
+}
+
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C9DC01F3AE7D1325951E487 /* SecurityTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC3037B968C87D4A0BB5D /* SecurityTokenManager.m */; };
+		3C9DC07A2F7B91389F5F7521 /* UIFont+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCC730BBA966D980A94BA /* UIFont+Extension.m */; };
 		3C9DC1681E1BF0B856AC4E9F /* game.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C9DC85C17CCB34471840B07 /* game.json */; };
 		3C9DC1963A899B9535531F77 /* GameRoundUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC371B4245685EE339E90 /* GameRoundUser.m */; };
 		3C9DC1D31E9AA8CD133D3E6D /* NSObject+PWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCBEEB08F869A8D016D09 /* NSObject+PWObject.m */; };
@@ -40,6 +41,7 @@
 		3C9DCE2E9613600B746FCF42 /* ScoreContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCC438A533A3E2E894E1D /* ScoreContainerView.m */; };
 		3C9DCEF667408CECB013D543 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC3A5AC072A35EE2F0EB0 /* LoginViewController.m */; };
 		3C9DCEF7AD66B796E39B4884 /* RoundCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCCFC71BAC95695A63A2F /* RoundCategory.m */; };
+		3C9DCFFE0B88CF0936B006F5 /* UIButton+EntStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCAD4E7F6B3D996312D5F /* UIButton+EntStyle.m */; };
 		7B0ABE881B3EEC37005A062C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0ABE871B3EEC37005A062C /* main.m */; };
 		7B0ABE8B1B3EEC37005A062C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0ABE8A1B3EEC37005A062C /* AppDelegate.m */; };
 		7B0ABE8E1B3EEC37005A062C /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0ABE8D1B3EEC37005A062C /* IndexViewController.m */; };
@@ -112,13 +114,16 @@
 		3C9DCA30752E4C0E5957FB0E /* RoundData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundData.h; sourceTree = "<group>"; };
 		3C9DCA81E1E26482ECF40B5F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3C9DCAB250B082C2B1B24755 /* RoundCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundCategory.h; sourceTree = "<group>"; };
+		3C9DCAD4E7F6B3D996312D5F /* UIButton+EntStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EntStyle.m"; sourceTree = "<group>"; };
 		3C9DCAE066BE38509D41F9FF /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		3C9DCB4F82A4AC17EE07539B /* PlayingGameManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingGameManagerViewController.m; sourceTree = "<group>"; };
 		3C9DCB621296E1F8EF616756 /* NSObject+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Json.h"; sourceTree = "<group>"; };
 		3C9DCBD2034692272947C468 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		3C9DCBEEB08F869A8D016D09 /* NSObject+PWObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PWObject.m"; sourceTree = "<group>"; };
 		3C9DCC1DAD8B6CCC295B2875 /* ResultStatusContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultStatusContainerView.m; sourceTree = "<group>"; };
+		3C9DCC405D30850FD085CE19 /* UIButton+EntStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EntStyle.h"; sourceTree = "<group>"; };
 		3C9DCC438A533A3E2E894E1D /* ScoreContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreContainerView.m; sourceTree = "<group>"; };
+		3C9DCC730BBA966D980A94BA /* UIFont+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Extension.m"; sourceTree = "<group>"; };
 		3C9DCCFC71BAC95695A63A2F /* RoundCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundCategory.m; sourceTree = "<group>"; };
 		3C9DCD28D8B0F1B863A6CC36 /* ModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObject.h; sourceTree = "<group>"; };
 		3C9DCD9C1A01998A0D80156F /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 		3C9DCE44BE452087BDE9145A /* AnswerTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTimerView.m; sourceTree = "<group>"; };
 		3C9DCE54CDFFCBC5C61DA561 /* NSObject+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Json.m"; sourceTree = "<group>"; };
 		3C9DCE7BF152CB2AD5AC8CF2 /* GameRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRound.m; sourceTree = "<group>"; };
+		3C9DCEA9752164970A5205AD /* UIFont+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Extension.h"; sourceTree = "<group>"; };
 		3C9DCEFFB8851E28B7D59D06 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		3C9DCF16ED334892F2A96EA0 /* AAForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAForm.h; sourceTree = "<group>"; };
 		3C9DCF3D94A63A5A9823C831 /* NewGameConfigureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameConfigureViewController.h; sourceTree = "<group>"; };
@@ -343,6 +349,10 @@
 				3C9DCBEEB08F869A8D016D09 /* NSObject+PWObject.m */,
 				3C9DCB621296E1F8EF616756 /* NSObject+Json.h */,
 				3C9DCE54CDFFCBC5C61DA561 /* NSObject+Json.m */,
+				3C9DCC730BBA966D980A94BA /* UIFont+Extension.m */,
+				3C9DCEA9752164970A5205AD /* UIFont+Extension.h */,
+				3C9DCAD4E7F6B3D996312D5F /* UIButton+EntStyle.m */,
+				3C9DCC405D30850FD085CE19 /* UIButton+EntStyle.h */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -597,6 +607,8 @@
 				3C9DC1963A899B9535531F77 /* GameRoundUser.m in Sources */,
 				3C9DCB6EB782C3792B515067 /* ModelObject.m in Sources */,
 				3C9DC59DDD277D778C052079 /* LocalJsonWrapper.m in Sources */,
+				3C9DC07A2F7B91389F5F7521 /* UIFont+Extension.m in Sources */,
+				3C9DCFFE0B88CF0936B006F5 /* UIButton+EntStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

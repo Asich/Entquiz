@@ -12,6 +12,10 @@
 #import "Answer.h"
 #import "UIButton+BackgroudForState.h"
 #import "NSObject+PWObject.h"
+#import "UIColor+Extensions.h"
+#import "UIButton+EntStyle.h"
+#import "UIViewController+Extensions.h"
+#import "UIFont+Extension.h"
 
 
 @interface QuestionViewController() {}
@@ -67,9 +71,9 @@
 - (void)colorButton:(UIButton *)answerButton accordingToSelectedAnswer:(Answer *)selectedAnswer {
     self.questionContainer.userInteractionEnabled = NO;
     if ([selectedAnswer isTrue]) {
-        [answerButton setBackgroundColor:[UIColor greenColor] forState:UIControlStateNormal];
+        [answerButton setBackgroundColor:[UIColor entGreenColor] forState:UIControlStateNormal];
     } else {
-        [answerButton setBackgroundColor:[UIColor redColor] forState:UIControlStateNormal];
+        [answerButton setBackgroundColor:[UIColor entRedColor] forState:UIControlStateNormal];
     }
 }
 
@@ -96,7 +100,7 @@
 #pragma mark - config ui
 
 - (void)configUI {
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self addDefaultBackground];
 
     self.scrollView = [[UIScrollView alloc] init];
     self.scrollView.backgroundColor = [UIColor lightGrayColor];
@@ -118,7 +122,7 @@
     self.currentQuestion = question;
 
     self.questionContainer = [[UIView alloc] init];
-    self.questionContainer.backgroundColor = [UIColor purpleColor];
+    self.questionContainer.backgroundColor = [UIColor whiteColor];
     self.questionContainer.userInteractionEnabled = YES;
     [self.scrollView addSubview:self.questionContainer];
     [self.questionContainer autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth]];
@@ -142,8 +146,8 @@
     }
 
     UILabel *questionLabel = [[UILabel alloc] init];
-    questionLabel.backgroundColor = [UIColor yellowColor];
     questionLabel.numberOfLines = 0;
+    questionLabel.font = [UIFont entLightFontWithSize:16];
     questionLabel.lineBreakMode = NSLineBreakByWordWrapping;
     questionLabel.textAlignment = NSTextAlignmentCenter;
     questionLabel.text = question.ques.title;
@@ -159,69 +163,54 @@
     [questionLabel autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:15];
 
 
-    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button1 setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button1 applyEntStyleAnswer];
     button1.tag = 0;
-    button1.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    button1.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button1.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.questionContainer addSubview:button1];
     [button1 addTarget:self action:@selector(clickOnAnswer:) forControlEvents:UIControlEventTouchUpInside];
-    [button1 autoSetDimension:ALDimensionHeight toSize:130];
-    [button1 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth] / 2];
+    [button1 autoSetDimension:ALDimensionHeight toSize:80];
+    [button1 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth]];
     [button1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:questionLabel];
     [button1 autoPinEdgeToSuperviewEdge:ALEdgeLeading];
 
-    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button2 setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button2 applyEntStyleAnswer];
     button2.tag = 1;
-    button2.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    button2.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button2.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.questionContainer addSubview:button2];
     [button2 addTarget:self action:@selector(clickOnAnswer:) forControlEvents:UIControlEventTouchUpInside];
-    [button2 autoSetDimension:ALDimensionHeight toSize:130];
-    [button2 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth] / 2];
-    [button2 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:questionLabel];
-    [button2 autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:button1];
+    [button2 autoSetDimension:ALDimensionHeight toSize:80];
+    [button2 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth]];
+    [button2 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button1];
+    [button2 autoPinEdgeToSuperviewEdge:ALEdgeLeading];
 
-    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button3 setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button3 applyEntStyleAnswer];
     button3.tag = 2;
-    button3.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    button3.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button3.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.questionContainer addSubview:button3];
     [button3 addTarget:self action:@selector(clickOnAnswer:) forControlEvents:UIControlEventTouchUpInside];
-    [button3 autoSetDimension:ALDimensionHeight toSize:130];
-    [button3 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth] / 2];
-    [button3 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button1];
+    [button3 autoSetDimension:ALDimensionHeight toSize:80];
+    [button3 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth]];
+    [button3 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button2];
     [button3 autoPinEdgeToSuperviewEdge:ALEdgeLeading];
 
-    UIButton *button4 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button4 setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    UIButton *button4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button4 applyEntStyleAnswer];
     button4.tag = 3;
-    button4.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    button4.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button4.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.questionContainer addSubview:button4];
     [button4 addTarget:self action:@selector(clickOnAnswer:) forControlEvents:UIControlEventTouchUpInside];
-    [button4 autoSetDimension:ALDimensionHeight toSize:130];
-    [button4 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth] / 2];
-    [button4 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button2];
-    [button4 autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:button3];
+    [button4 autoSetDimension:ALDimensionHeight toSize:80];
+    [button4 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth]];
+    [button4 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button3];
+    [button4 autoPinEdgeToSuperviewEdge:ALEdgeLeading];
 
-    UIButton *button5 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button5 setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    UIButton *button5 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button5 applyEntStyleAnswer];
     button5.tag = 4;
-    button5.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    button5.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button5.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.questionContainer addSubview:button5];
     [button5 addTarget:self action:@selector(clickOnAnswer:) forControlEvents:UIControlEventTouchUpInside];
-    [button5 autoSetDimension:ALDimensionHeight toSize:130];
-    [button5 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth] / 2];
-    [button5 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button3];
+    [button5 autoSetDimension:ALDimensionHeight toSize:80];
+    [button5 autoSetDimension:ALDimensionWidth toSize:[ASize screenWidth]];
+    [button5 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:button4];
     [button5 autoPinEdgeToSuperviewEdge:ALEdgeLeading];
 
 

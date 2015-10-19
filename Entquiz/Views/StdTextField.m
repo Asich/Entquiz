@@ -5,6 +5,7 @@
 
 #import "StdTextField.h"
 #import "ViewFrameAccessor.h"
+#import "UIFont+Extension.h"
 
 
 #define kTextFieldHeight 30
@@ -30,6 +31,9 @@
     [self addSubview:line];
 
     self.clearButtonMode = UITextFieldViewModeWhileEditing;
+
+
+    self.font = [UIFont entMediumFontWithSize:15];
 }
 
 @end

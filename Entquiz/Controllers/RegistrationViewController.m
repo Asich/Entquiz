@@ -16,6 +16,7 @@
 #import "UIViewController+Extensions.h"
 #import "User.h"
 #import "MainViewController.h"
+#import "UIButton+EntStyle.h"
 
 #define kUserNameTextFieldPlaceholder @"Логин"
 #define kPasswordButtonTitle @"Пароль"
@@ -106,10 +107,7 @@
 #pragma mark - config ui
 
 - (void)configUI {
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self setNavigationBarTransparent];
-    [self defaultNavigationBarTitleColor];
+    [self addDefaultBackground];
 
 
     CGRect frame = CGRectMake(0, 0, [ASize screenWidth], [ASize screenHeight]);
@@ -124,11 +122,13 @@
     [form pushView:self.userNameTextField marginTop:150 centered:YES];
 
     self.passwordTextField = [[StdTextField alloc] init];
+    self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.placeholder = kPasswordButtonTitle;
     [form pushView:self.passwordTextField marginTop:20 centered:YES];
 
 
-    UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [registerButton applyEntStyleGray];
     [registerButton setTitle:kRegisterButtonTitle forState:UIControlStateNormal];
     [registerButton addTarget:self action:@selector(register) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:registerButton marginTop:20 centered:YES];

@@ -25,8 +25,6 @@
 #pragma mark -
 
 - (void)configUI {
-    self.backgroundColor = [UIColor yellowColor];
-
     self.timerSlider = [[UISlider alloc] init];
     //[self.timerSlider setThumbImage:[UIImage new] forState:UIControlStateNormal];
     self.timerSlider.userInteractionEnabled = NO;

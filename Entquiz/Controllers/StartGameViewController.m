@@ -6,6 +6,7 @@
 #import "StartGameViewController.h"
 #import "AAForm.h"
 #import "PlayingGameManagerViewController.h"
+#import "UIButton+EntStyle.h"
 
 
 #define kFindRibalButtonTitle @"Найти соперника"
@@ -51,11 +52,13 @@
     AAForm *form = [[AAForm alloc] initWithScrollView:scrollView];
     
     UIButton *findRivalButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [findRivalButton applyEntStyleGray];
     [findRivalButton setTitle:kFindRibalButtonTitle forState:UIControlStateNormal];
     [findRivalButton addTarget:self action:@selector(findRival) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:findRivalButton marginTop:150 centered:YES];
 
-    UIButton *randomRivalButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *randomRivalButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [randomRivalButton applyEntStyleGray];
     [randomRivalButton setTitle:kRandomRivalButtonTitle forState:UIControlStateNormal];
     [randomRivalButton addTarget:self action:@selector(randomRival) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:randomRivalButton marginTop:20 centered:YES];

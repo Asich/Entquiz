@@ -13,13 +13,16 @@
 #import "SecurityTokenManager.h"
 #import "MainViewController.h"
 #import "User.h"
+#import "UIColor+Extensions.h"
+#import "UIFont+Extension.h"
+#import "UIViewController+Extensions.h"
+#import "UIButton+BackgroudForState.h"
+#import "UIButton+EntStyle.h"
 
-#define kButtonWidth 200
-#define kButtonHeight 40
-#define kAppNameTitleString @"БЗГ"
+#define kAppNameTitleString @"Битва за грант"
 #define kCreateButtonTitle @"Создать аккаунт"
 #define kEnterButtonTitle @"Вход"
-#define kAppNameTitleFont @"Helvetica-Neue"
+
 
 @interface IndexViewController ()
 @property (nonatomic, strong) RegistrationViewController *registrationVC;
@@ -69,7 +72,11 @@
 #pragma mark - build UI
 
 - (void)configUI {
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self addDefaultBackground];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self setNavigationBarTransparent];
+    [self defaultNavigationBarTitleColor];
+
 
     CGRect frame = CGRectMake(0, 0, [ASize screenWidth], [ASize screenHeight]);
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
@@ -78,22 +85,23 @@
     AAForm *form = [[AAForm alloc] initWithScrollView:scrollView];
 
     UILabel *testLabel = [[UILabel alloc] init];
-    testLabel.font = [UIFont fontWithName:kAppNameTitleFont size:30];
+    testLabel.font = [UIFont entMediumFontWithSize:15];
+    testLabel.textColor = [UIColor lightGrayColor];
     testLabel.text = kAppNameTitleString;
     [testLabel sizeToFit];
     [form pushView:testLabel marginTop:30 centered:YES];
 
-    UIButton *createAccountButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    createAccountButton.frame = CGRectMake(0, 0, kButtonWidth, kButtonHeight);
+    UIButton *createAccountButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [createAccountButton applyEntStyleGray];
     [createAccountButton setTitle:kCreateButtonTitle forState:UIControlStateNormal];
     [createAccountButton addTarget:self action:@selector(createAccount) forControlEvents:UIControlEventTouchUpInside];
-    [form pushView:createAccountButton marginTop:100 centered:YES];
+    [form pushView:createAccountButton marginTop:150 centered:YES];
 
-    UIButton *enterButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    enterButton.frame = CGRectMake(0, 0, kButtonWidth, kButtonHeight);
+    UIButton *enterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [enterButton applyEntStyleGreen];
     [enterButton setTitle:kEnterButtonTitle forState:UIControlStateNormal];
     [enterButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-    [form pushView:enterButton marginTop:20 centered:YES];
+    [form pushView:enterButton marginTop:10 centered:YES];
 }
 
 #pragma mark -

@@ -19,6 +19,7 @@
 #import "GameApi.h"
 #import "NSObject+Json.h"
 #import "Question.h"
+#import "UIViewController+Extensions.h"
 
 
 @interface PlayingGameManagerViewController() {}
@@ -202,11 +203,10 @@
 #pragma mark - config ui
 
 - (void)configUI {
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self addDefaultBackground];
 
     self.scrollView = [[UIScrollView alloc] init];
     self.scrollView.alwaysBounceVertical = YES;
-    self.scrollView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:self.scrollView];
     [self.scrollView autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [self.scrollView autoPinEdgeToSuperviewEdge:ALEdgeLeading];

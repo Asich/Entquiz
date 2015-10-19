@@ -12,6 +12,10 @@
 #import "SVProgressHUD.h"
 #import "User.h"
 #import "SecurityTokenManager.h"
+#import "UIButton+EntStyle.h"
+#import "UIColor+Extensions.h"
+#import "UIFont+Extension.h"
+#import "UIViewController+Extensions.h"
 
 #define kUserNameTextFieldPlaceholder @"Логин"
 #define kPasswordTextFieldPlaceholder @"Пароль"
@@ -86,7 +90,7 @@
 #pragma mark - config ui
 
 - (void)configUI {
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self addDefaultBackground];
 
     CGRect frame = CGRectMake(0, 0, [ASize screenWidth], [ASize screenHeight]);
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
@@ -100,16 +104,20 @@
     [form pushView:self.userNameTextField marginTop:150 centered:YES];
 
     self.passwordTextField = [[StdTextField alloc] init];
+    self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.placeholder = kPasswordTextFieldPlaceholder;
     [form pushView:self.passwordTextField marginTop:20 centered:YES];
 
 
-    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [loginButton applyEntStyleGreen];
     [loginButton setTitle:kEnterButtonTitle forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:loginButton marginTop:20 centered:YES];
 
-    UIButton *forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [forgotPasswordButton setTitleColor:[UIColor entGreenColor] forState:UIControlStateNormal];
+    forgotPasswordButton.titleLabel.font = [UIFont entMediumFontWithSize:13];
     [forgotPasswordButton setTitle:kForgotPasswordButtonTitle forState:UIControlStateNormal];
     [form pushView:forgotPasswordButton marginTop:150 centered:YES];
 }

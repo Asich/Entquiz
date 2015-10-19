@@ -19,4 +19,8 @@
 + (UIColor *)orangeACBColor;
 + (UIColor *)entquizGrayColor;
 
++ (UIColor *)entGreenColor;
++ (UIColor *)entGrayColor;
++ (UIColor *)entRedColor;
+
 @end

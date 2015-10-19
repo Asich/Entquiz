@@ -12,6 +12,7 @@
 #import "ChooseCategoryViewController.h"
 #import "GameRound.h"
 #import "LocalJsonWrapper.h"
+#import "UIColor+Extensions.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
@@ -31,11 +32,27 @@
     self.window.rootViewController = nc;
     
     [self.window makeKeyAndVisible];
+    [self customizeColors];
 
     [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:YES];
     [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:YES];
 
     return YES;
+}
+
+- (void)customizeColors {
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{
+            NSForegroundColorAttributeName:[UIColor entGreenColor],
+            NSFontAttributeName:[UIFont boldSystemFontOfSize:13.0]
+    } forState:UIControlStateNormal];
+    //self.window.tintColor = [UIColor greenColor];
+    //[[UITabBar appearance] setBarTintColor:[UIColor fromRGB:0xC32041]];
+    //[[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    //[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor entGreenColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor entGreenColor]];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -10,7 +10,7 @@
 @implementation UIViewController (Extensions)
 
 - (void)addDefaultBackground {
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_main"]];
+    self.view.backgroundColor = [UIColor fromRGB:0xEEEEEE];
 }
 
 - (void)setNavigationBarTransparent {
