@@ -9,3 +9,6 @@ pod 'IQKeyboardManager', '3.2.4'
 pod 'UIActionSheet+Blocks', '0.8.1'
 pod 'UIAlertView+Blocks', '0.8.1'
 pod 'SSKeychain'
+
+pod 'Fabric'
+pod 'Crashlytics'

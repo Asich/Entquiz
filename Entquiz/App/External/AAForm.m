@@ -172,11 +172,11 @@
     formView.topEdgeConstraint = constraint;
 
     // Clear superview bottom constraint
-    [self clearViewSuperviewBottomConstraint];
-
-    // Set superview bottom constraint to bottom view
-    NSLayoutConstraint *bottomConstraint = [view autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:contentScrollViewBottomPadding];
-    formView.superviewBottomEdgeConstraint = bottomConstraint;
+//    [self clearViewSuperviewBottomConstraint];
+//
+//    // Set superview bottom constraint to bottom view
+//    NSLayoutConstraint *bottomConstraint = [view autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:contentScrollViewBottomPadding];
+//    formView.superviewBottomEdgeConstraint = bottomConstraint;
 }
 
 -(void)pushViewAtTop:(UIView *)view {

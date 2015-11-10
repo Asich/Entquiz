@@ -143,8 +143,8 @@
         NSString *questionKey = [NSString stringWithFormat:@"q%iId", i + 1];
         NSString *answerKey = [NSString stringWithFormat:@"a%iId", i + 1];
 
-        params[questionKey] = answer.quesId;
-        params[answerKey] = answer.answerId;
+        params[questionKey] = answer.quesId  ? : [NSNull null];
+        params[answerKey] = answer.answerId  ? : [NSNull null];
     }
 
     [GameApi submitRoundWithParams:params success:^(id response) {
