@@ -60,7 +60,7 @@
 
     UILabel *roundNumberLabel = [[UILabel alloc] init];
     roundNumberLabel.font = [UIFont systemFontOfSize:12];
-    roundNumberLabel.text = [NSString stringWithFormat:@"РАУНД %i", self.roundNumber];
+    roundNumberLabel.text = [NSString stringWithFormat:@"РАУНД %li", (long)self.roundNumber];
     [centerContainer addSubview:roundNumberLabel];
 
     UILabel *categoryNameLabel = [[UILabel alloc] init];

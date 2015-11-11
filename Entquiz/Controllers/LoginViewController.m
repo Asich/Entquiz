@@ -16,6 +16,7 @@
 #import "UIColor+Extensions.h"
 #import "UIFont+Extension.h"
 #import "UIViewController+Extensions.h"
+#import "UIAlertView+Blocks.h"
 
 #define kUserNameTextFieldPlaceholder @"Логин"
 #define kPasswordTextFieldPlaceholder @"Пароль"
@@ -71,6 +72,19 @@
                 [[SecurityTokenManager sharedManager] writeToken:response[@"token"] userName:self.userNameTextField.text];
 
 
+
+                //REGISTER TOKEN
+                //REGISTER FOR PUSH
+                NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"devicePushTokenId"];
+                if (deviceToken) {
+                    [AuthApi registerPushDeviceToke:deviceToken success:^(id response2) {
+                        [UIAlertView showWithTitle:nil message:@"DEVICE TOKEN REGISTERED" cancelButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                    } failure:^(NSInteger code, NSString *message) {
+                        [UIAlertView showWithTitle:nil message:@"DEVICE NOT TOKEN REGISTERED" cancelButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                    }];
+                }
+
+                //TOGO MAINVC
                 [wSelf gotoMainViewController];
             }
 

@@ -89,7 +89,11 @@
 
         } else {
 
-            [self showQuestionWithRoundData:self.gameRound.data[0]];
+            if (self.gameRound.data.count == 0) {
+
+            } else {
+                [self showQuestionWithRoundData:self.gameRound.data[0]];
+            }
 
         }
 

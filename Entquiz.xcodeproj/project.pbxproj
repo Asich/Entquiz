@@ -443,6 +443,7 @@
 				7B0ABE801B3EEC37005A062C /* Resources */,
 				60BBF0CA45E718AEC87E80C4 /* Copy Pods Resources */,
 				2A552D626BA006C9BAFC6C4D /* Embed Pods Frameworks */,
+				7BC822B01BF24784002DEA49 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -575,6 +576,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7BC822B01BF24784002DEA49 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run b404cf6881383203260d5d750cd5797190ad3b5c 5bb8dbf9cfc93e3aa5182107981580756a1a14f091cd2a68d15d927e200669a1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -747,12 +761,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Askar Mustafin (D9RRED9P7M)";
 				INFOPLIST_FILE = Entquiz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a18c3c88-a80d-4e11-ac6e-48bc6c602e84";
+				PROVISIONING_PROFILE = "61f1f377-54c6-4e7e-bfb7-86d528766f09";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
@@ -763,12 +777,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Askar Mustafin (D9RRED9P7M)";
 				INFOPLIST_FILE = Entquiz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a18c3c88-a80d-4e11-ac6e-48bc6c602e84";
+				PROVISIONING_PROFILE = "61f1f377-54c6-4e7e-bfb7-86d528766f09";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;

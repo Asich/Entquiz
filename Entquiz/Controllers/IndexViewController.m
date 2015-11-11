@@ -18,6 +18,8 @@
 #import "UIViewController+Extensions.h"
 #import "UIButton+BackgroudForState.h"
 #import "UIButton+EntStyle.h"
+#import "AuthApi.h"
+#import "UIAlertView+Blocks.h"
 
 #define kAppNameTitleString @"Битва за грант"
 #define kCreateButtonTitle @"Создать аккаунт"
@@ -45,11 +47,23 @@
     NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
 
     if (userName) {
+        //CREATE SHARED USER
         NSString *secureToken = [[SecurityTokenManager sharedManager] readTokenForUserName:userName];
         [User sharedInstance].accessToken = secureToken;
         [User sharedInstance].userName = userName;
         [User sharedInstance].userId = userId;
 
+        //REGISTER FOR PUSH
+        NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"devicePushTokenId"];
+        if (deviceToken) {
+            [AuthApi registerPushDeviceToke:deviceToken success:^(id response) {
+                [UIAlertView showWithTitle:nil message:@"DEVICE TOKEN REGISTERED" cancelButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+            } failure:^(NSInteger code, NSString *message) {
+                [UIAlertView showWithTitle:nil message:@"DEVICE NOT TOKEN REGISTERED" cancelButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+            }];
+        }
+
+        //GOTO MAINVC
         if (secureToken) {
             MainViewController *mainViewController = [[MainViewController alloc] init];
             [self.navigationController pushViewController:mainViewController animated:YES];

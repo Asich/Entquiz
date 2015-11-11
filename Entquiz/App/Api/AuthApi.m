@@ -5,6 +5,7 @@
 
 #import "AuthApi.h"
 #import "AFHTTPSessionManager.h"
+#import "User.h"
 
 
 @implementation AuthApi {}
@@ -16,5 +17,13 @@
 + (void)loginWithName:(NSString *)name andPassword:(NSString *)password success:(Success)success failure:(Failure)failure {
     [self POST:@"/login" parameters:@{@"username" : name, @"password" : password} success:success failure:failure];
 }
+
++ (void)registerPushDeviceToke:(NSString *)deviceToken success:(Success)success failure:(Failure)failure {
+    [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
+                                  forHTTPHeaderField:@"Authorization"];
+
+    [self POST:@"/registerDevice" parameters:@{@"deviceId" : deviceToken, @"deviceOS" : @"iOS"} success:success failure:failure];
+}
+
 
 @end
