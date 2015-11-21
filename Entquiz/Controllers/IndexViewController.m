@@ -57,9 +57,9 @@
         NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"devicePushTokenId"];
         if (deviceToken) {
             [AuthApi registerPushDeviceToke:deviceToken success:^(id response) {
-                [UIAlertView showWithTitle:nil message:@"DEVICE TOKEN REGISTERED" cancelButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                NSLog(@"Device token register success");
             } failure:^(NSInteger code, NSString *message) {
-                [UIAlertView showWithTitle:nil message:@"DEVICE NOT TOKEN REGISTERED" cancelButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                NSLog(@"Device token register fail");
             }];
         }
 

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class StdTextField;
-@class AMFloatLabelTextField;
 
 @interface RegistrationViewController : UIViewController
 

@@ -88,6 +88,16 @@
                 //save secure token for name
                 [[SecurityTokenManager sharedManager] writeToken:response[@"token"] userName:self.userNameTextField.text];
 
+                //REGISTER DEVICE TOKEN FOR PUSH
+                NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"devicePushTokenId"];
+                if (deviceToken) {
+                    [AuthApi registerPushDeviceToke:deviceToken success:^(id response2) {
+                        NSLog(@"Device token register success");
+                    } failure:^(NSInteger code, NSString *message) {
+                        NSLog(@"Device token register fail");
+                    }];
+                }
+
                 [wSelf gotoMainViewController];
             }
 
@@ -125,7 +135,6 @@
     self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.placeholder = kPasswordButtonTitle;
     [form pushView:self.passwordTextField marginTop:20 centered:YES];
-
 
     UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [registerButton applyEntStyleGray];

@@ -13,6 +13,7 @@
 #import "GameRound.h"
 #import "LocalJsonWrapper.h"
 #import "UIColor+Extensions.h"
+#import "NSObject+Json.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -119,6 +120,7 @@
 #endif
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"didReceiveRemoteNotification 1: %@", [userInfo JSONRepresentation]);
 //    [PushNotificationHandler handlePushWithData:userInfo];
 //    if (userInfo[@"uid"]) {
 //        [ProfileApi notificationPullUid:userInfo[@"uid"]];
@@ -126,6 +128,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+    NSLog(@"didReceiveRemoteNotification 2: %@", [userInfo JSONRepresentation]);
 //    [PushNotificationHandler handlePushWithData:userInfo];
 //    if (userInfo[@"uid"]) {
 //        [ProfileApi notificationPullUid:userInfo[@"uid"]];
