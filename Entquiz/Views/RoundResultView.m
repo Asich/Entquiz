@@ -6,13 +6,14 @@
 #import "RoundResultView.h"
 #import "ALView+PureLayout.h"
 #import "ResultStatusContainerView.h"
+#import "UIFont+Extension.h"
 
 
 @interface RoundResultView() {}
 @property (nonatomic, assign) NSInteger roundNumber;
 @property (nonatomic, strong) NSString *categoryName;
-@property(nonatomic, strong) ResultStatusContainerView *playerResultContainer;
-@property(nonatomic, strong) ResultStatusContainerView *opponentResultContainer;
+@property (nonatomic, strong) ResultStatusContainerView *playerResultContainer;
+@property (nonatomic, strong) ResultStatusContainerView *opponentResultContainer;
 @end
 
 @implementation RoundResultView {}
@@ -59,7 +60,7 @@
 
 
     UILabel *roundNumberLabel = [[UILabel alloc] init];
-    roundNumberLabel.font = [UIFont systemFontOfSize:12];
+    roundNumberLabel.font = [UIFont entMediumFontWithSize:12];
     roundNumberLabel.text = [NSString stringWithFormat:@"РАУНД %li", (long)self.roundNumber];
     [centerContainer addSubview:roundNumberLabel];
 
@@ -75,8 +76,6 @@
     self.opponentResultContainer = [[ResultStatusContainerView alloc] initWithMaxAnswers:@""];
     [self addSubview:self.playerResultContainer];
     [self addSubview:self.opponentResultContainer];
-
-
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -103,8 +102,6 @@
     [self.playerResultContainer autoPinEdgeToSuperviewEdge:ALEdgeTop];
     [self.opponentResultContainer autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:centerContainer withOffset:10];
     [self.opponentResultContainer autoPinEdgeToSuperviewEdge:ALEdgeTop];
-
-
 }
 
 @end

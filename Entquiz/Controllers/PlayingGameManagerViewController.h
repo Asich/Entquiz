@@ -10,8 +10,5 @@
 
 
 @interface PlayingGameManagerViewController : UIViewController
-
-- (void)startGame;
-
-
+- (id)initWithOpponentId:(NSNumber *)opponentId;
 @end

@@ -47,5 +47,44 @@
     [self GET:[NSString stringWithFormat:@"/getRoundData/%@", gameId] parameters:nil success:success failure:failure];
 }
 
+/**
+* Find opponent
+*
+*/
++ (void)findOpponentWithName:(NSString *)name success:(Success)success failure:(Failure)failure {
+    [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
+                                  forHTTPHeaderField:@"Authorization"];
+    [self POST:@"/findOpponent" parameters:@{@"username" : name} success:success failure:failure];
+}
+
+/**
+* Invite for game
+*
+*/
++ (void)inviteOpponentWithOpponentId:(NSNumber *)opponentId success:(Success)success failure:(Failure)failure {
+    [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
+                                  forHTTPHeaderField:@"Authorization"];
+    [self POST:@"/inviteForGame" parameters:@{@"userId" : opponentId} success:success failure:failure];
+}
+
+/**
+* Accept invite for game
+*
+*/
++ (void)acceptInviteForGameOpponentId:(NSNumber *)opponentId success:(Success)success failure:(Failure)failure {
+    [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
+                                  forHTTPHeaderField:@"Authorization"];
+    [self POST:@"/acceptInviteForGame" parameters:@{@"opponentId" : opponentId} success:success failure:failure];
+}
+
+/**
+*  Reject invite for game
+*
+*/
++ (void)rejectInviteForGameOpponentId:(NSNumber *)opponentId success:(Success)success failure:(Failure)failure {
+    [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
+                                  forHTTPHeaderField:@"Authorization"];
+    [self POST:@"/rejectInviteForGame" parameters:@{@"opponentId" : opponentId} success:success failure:failure];
+}
 
 @end

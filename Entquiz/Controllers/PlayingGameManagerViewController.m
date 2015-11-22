@@ -6,6 +6,7 @@
 #import <PureLayout/PureLayoutDefines.h>
 #import <PureLayout/ALView+PureLayout.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 #import "PlayingGameManagerViewController.h"
 #import "ScoreContainerView.h"
 #import "GameRound.h"
@@ -23,6 +24,9 @@
 
 
 @interface PlayingGameManagerViewController() {}
+
+@property (nonatomic, strong) NSNumber *opponentId;
+
 @property (nonatomic, strong) GameRound *gameRound;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) ScoreContainerView *scoreContainerView;
@@ -42,10 +46,25 @@
     return self;
 }
 
+- (id)initWithOpponentId:(NSNumber *)opponentId {
+    self = [super init];
+    if (self) {
+        self.opponentId = opponentId;
+        self.roundResultViews = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configUI];
-    [self startGame];
+
+    if (!self.opponentId) {
+        [self startGame];
+    } else {
+        [self acceptInvitStartGame];
+    }
+
 }
 
 
@@ -57,7 +76,56 @@
 #pragma mark - config actions
 
 /**
-*  INITIAL START GAME METHOD
+*  ACCEPT INVITE START GAME
+*
+*/
+
+- (void)acceptInvitStartGame {
+    __weak PlayingGameManagerViewController *wSelf = self;
+    [SVProgressHUD show];
+
+    [GameApi acceptInviteForGameOpponentId:self.opponentId success:^(id response) {
+        NSLog(@"startWithSuccess: %@", [response JSONRepresentationPretyPrinted:YES]);
+
+        self.gameRound = [GameRound instanceFromDictionary:response];
+
+        [self buildScoreContainerView];
+
+
+        //if gameRound has no opponent yet
+        //choose category
+        //and then answer on 3 questions
+        //if gameRound has opponent
+        //show question to answer
+        if (!self.gameRound.opponent) {
+
+            ChooseCategoryViewController *vc = [[ChooseCategoryViewController alloc] initWithRoundData:self.gameRound.data];
+            [self presentViewController:vc animated:YES completion:nil];
+            vc.onRoundCategoryClick = ^(RoundData *roundData) {
+                [wSelf showQuestionWithRoundData:roundData];
+            };
+
+        } else {
+
+            if (self.gameRound.data.count == 0) {
+
+            } else {
+                [self showQuestionWithRoundData:self.gameRound.data[0]];
+            }
+
+        }
+
+
+        [SVProgressHUD dismiss];
+    } failure:^(NSInteger code, NSString *message) {
+        [UIAlertView showWithTitle:nil message:@"Не удалось начать игру" cancelButtonTitle:@"ОК" otherButtonTitles:nil tapBlock:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+        [SVProgressHUD dismiss];
+    }];
+}
+
+/**
+*  INITIAL START GAME
 *
 *
 */
@@ -103,7 +171,8 @@
     } failure:^(NSInteger code, NSString *message) {
 
         NSLog(@"start game failure message: %@", message);
-
+        [UIAlertView showWithTitle:nil message:@"Не удалось начать игру" cancelButtonTitle:@"ОК" otherButtonTitles:nil tapBlock:nil];
+        [self.navigationController popViewControllerAnimated:YES];
         [SVProgressHUD dismiss];
     }];
 

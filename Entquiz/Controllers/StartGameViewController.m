@@ -7,6 +7,7 @@
 #import "AAForm.h"
 #import "PlayingGameManagerViewController.h"
 #import "UIButton+EntStyle.h"
+#import "FindOpponentViewController.h"
 
 
 #define kFindRibalButtonTitle @"Найти соперника"
@@ -30,8 +31,9 @@
 
 #pragma mark - config actions
 
-- (void)findRival {
-
+- (void)findOpponent {
+    FindOpponentViewController *vc = [[FindOpponentViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)randomRival {
@@ -54,7 +56,7 @@
     UIButton *findRivalButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [findRivalButton applyEntStyleGray];
     [findRivalButton setTitle:kFindRibalButtonTitle forState:UIControlStateNormal];
-    [findRivalButton addTarget:self action:@selector(findRival) forControlEvents:UIControlEventTouchUpInside];
+    [findRivalButton addTarget:self action:@selector(findOpponent) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:findRivalButton marginTop:150 centered:YES];
 
     UIButton *randomRivalButton = [UIButton buttonWithType:UIButtonTypeCustom];

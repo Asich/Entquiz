@@ -40,6 +40,12 @@
     [self authenticateUser];
 }
 
+#pragma mark -
+
+/**
+*  First authenticate user
+*
+*/
 - (void)authenticateUser {
     //todo do authentication with token
 
@@ -73,11 +79,19 @@
 
 #pragma mark - config actions
 
+/**
+*  Go to RegistrationViewController if createAccountButton click
+*
+*/
 - (void)createAccount {
     self.registrationVC = [[RegistrationViewController alloc] init];
     [self.navigationController pushViewController:self.registrationVC animated:YES];
 }
 
+
+/**
+*  Go to LoginViewController if enterButton click
+*/
 - (void)login {
     self.loginVC = [[LoginViewController alloc] init];
     [self.navigationController pushViewController:self.loginVC animated:YES];
@@ -85,6 +99,10 @@
 
 #pragma mark - build UI
 
+/**
+*  Configuring UI elements
+*
+*/
 - (void)configUI {
     [self addDefaultBackground];
     [self.navigationController setNavigationBarHidden:NO animated:YES];

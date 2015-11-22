@@ -29,5 +29,29 @@
 */
 + (void)submitRoundWithParams:(NSDictionary *)params success:(Success)success failure:(Failure)failure;
 
+/**
+* Find opponent
+*
+*/
++ (void)findOpponentWithName:(NSString *)name success:(Success)success failure:(Failure)failure;
+
+/**
+* Invite for game
+*
+*/
++ (void)inviteOpponentWithOpponentId:(NSNumber *)opponentId success:(Success)success failure:(Failure)failure;
+
+/**
+* Accept invite for game
+*
+*/
++ (void)acceptInviteForGameOpponentId:(NSNumber *)opponentId success:(Success)success failure:(Failure)failure;
+
+/**
+*  Reject invite for game
+*
+*/
++ (void)rejectInviteForGameOpponentId:(NSNumber *)opponentId success:(Success)success failure:(Failure)failure;
+
 
 @end

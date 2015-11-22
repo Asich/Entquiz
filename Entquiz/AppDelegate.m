@@ -8,12 +8,12 @@
 
 #import "AppDelegate.h"
 #import "IndexViewController.h"
-#import "GameViewController.h"
-#import "ChooseCategoryViewController.h"
-#import "GameRound.h"
-#import "LocalJsonWrapper.h"
 #import "UIColor+Extensions.h"
 #import "NSObject+Json.h"
+#import "LoginViewController.h"
+#import "UIAlertView+Blocks.h"
+#import "PushNotificationHandler.h"
+#import "UIFont+Extension.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -53,7 +53,7 @@
 - (void)customizeColors {
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{
             NSForegroundColorAttributeName:[UIColor entGreenColor],
-            NSFontAttributeName:[UIFont boldSystemFontOfSize:13.0]
+            NSFontAttributeName: [UIFont entHeavyFontWithSize:13]
     } forState:UIControlStateNormal];
     //self.window.tintColor = [UIColor greenColor];
     //[[UITabBar appearance] setBarTintColor:[UIColor fromRGB:0xC32041]];
@@ -133,6 +133,20 @@
 //    if (userInfo[@"uid"]) {
 //        [ProfileApi notificationPullUid:userInfo[@"uid"]];
 //    }
+    [PushNotificationHandler handlePushWithUserInfo:userInfo];
+
+//    NSString *message = userInfo[@"aps"][@"alert"];
+//    [UIAlertView showWithTitle:nil message:message cancelButtonTitle:@"НЕТ" otherButtonTitles:@[@"ДА"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//        if (alertView.cancelButtonIndex != buttonIndex) {
+//
+//            UINavigationController *nc = (UINavigationController *) self.window.rootViewController;
+//            LoginViewController *vc = [[LoginViewController alloc] init];
+//            [nc pushViewController:vc animated:YES];
+//
+//        }
+//    }];
+//
+// }
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
