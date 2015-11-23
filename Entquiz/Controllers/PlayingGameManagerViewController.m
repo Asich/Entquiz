@@ -64,7 +64,6 @@
     } else {
         [self acceptInvitStartGame];
     }
-
 }
 
 
@@ -85,7 +84,6 @@
     [SVProgressHUD show];
 
     [GameApi acceptInviteForGameOpponentId:self.opponentId success:^(id response) {
-        NSLog(@"startWithSuccess: %@", [response JSONRepresentationPretyPrinted:YES]);
 
         self.gameRound = [GameRound instanceFromDictionary:response];
 
@@ -130,47 +128,45 @@
 *
 */
 - (void)startGame {
-    __weak PlayingGameManagerViewController *wSelf = self;
 
     [SVProgressHUD show];
     [GameApi startWithSuccess:^(id response) {
 
-        NSLog(@"startWithSuccess: %@", [response JSONRepresentationPretyPrinted:YES]);
-
         self.gameRound = [GameRound instanceFromDictionary:response];
 
         [self buildScoreContainerView];
-
+        [self reloadStatusButtonTitle];
 
         //if gameRound has no opponent yet
         //choose category
         //and then answer on 3 questions
         //if gameRound has opponent
         //show question to answer
-        if (!self.gameRound.opponent) {
+//        if (!self.gameRound.opponent) {
 
-            ChooseCategoryViewController *vc = [[ChooseCategoryViewController alloc] initWithRoundData:self.gameRound.data];
-            [self presentViewController:vc animated:YES completion:nil];
-            vc.onRoundCategoryClick = ^(RoundData *roundData) {
-                [wSelf showQuestionWithRoundData:roundData];
-            };
+//            ChooseCategoryViewController *vc = [[ChooseCategoryViewController alloc] initWithRoundData:self.gameRound.data];
+//            [self presentViewController:vc animated:YES completion:nil];
+//            vc.onRoundCategoryClick = ^(RoundData *roundData) {
+//                [wSelf showQuestionWithRoundData:roundData];
+//            };
 
-        } else {
-
-            if (self.gameRound.data.count == 0) {
-
-            } else {
-                [self showQuestionWithRoundData:self.gameRound.data[0]];
-            }
-
-        }
+//            [self reloadStatusButtonTitle];
+//
+//        } else {
+//
+//            if (self.gameRound.data.count == 0) {
+//
+//            } else {
+//                [self showQuestionWithRoundData:self.gameRound.data[0]];
+//            }
+//
+//        }
 
 
 
         [SVProgressHUD dismiss];
     } failure:^(NSInteger code, NSString *message) {
 
-        NSLog(@"start game failure message: %@", message);
         [UIAlertView showWithTitle:nil message:@"Не удалось начать игру" cancelButtonTitle:@"ОК" otherButtonTitles:nil tapBlock:nil];
         [self.navigationController popViewControllerAnimated:YES];
         [SVProgressHUD dismiss];
@@ -221,9 +217,7 @@
     }
 
     [GameApi submitRoundWithParams:params success:^(id response) {
-        NSLog(@"response: %@", response);
     } failure:^(NSInteger code, NSString *message) {
-        NSLog(@"failure: %@", message);
     }];
 }
 
@@ -234,21 +228,21 @@
     [self.refreshControl endRefreshing];
 
     [GameApi getRoundDataWithGameId:self.gameRound.gameId success:^(id response) {
-        NSLog(@"getRoundData: %@", [response JSONRepresentationPretyPrinted:YES]);
 
         self.gameRound = [GameRound instanceFromDictionary:response];
 
+        [self reloadStatusButtonTitle];
 
-        if (self.gameRound.data.count > 0) {
+    } failure:^(NSInteger code, NSString *message) {
+    }];
+}
+
+- (void)reloadStatusButtonTitle {
+    if (self.gameRound.data.count > 0) {
             [self.statusButton setTitle:@"Играть" forState:UIControlStateNormal];
         } else {
             [self.statusButton setTitle:@"Ждем" forState:UIControlStateNormal];
         }
-
-
-    } failure:^(NSInteger code, NSString *message) {
-        NSLog(@"failure: %@", message);
-    }];
 }
 
 - (void)clickStatusButton {
@@ -266,12 +260,6 @@
 
     }
 }
-
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark - config ui
 
@@ -338,8 +326,6 @@
         for (Question *question in questions) {
             Answer *opponentAnswer = [question getAnswerById:question.opponentAnsweredId];
 
-            NSLog(@"opponent answer title: %@", opponentAnswer.title);
-
             if (opponentAnswer.isTrue) {
                 [roundResultView1 setOpponentAnswerRight];
             } else {
@@ -362,13 +348,6 @@
 
     [self.roundResultViews addObject:roundResultView1];
 }
-
-
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
 
 #pragma mark -
 

@@ -24,20 +24,19 @@
 
 
 /**
-*  Get roundData
+*  Submit answers
 *
 */
 + (void)submitRoundWithParams:(NSDictionary *)params success:(Success)success failure:(Failure)failure {
     [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
                                   forHTTPHeaderField:@"Authorization"];
 
-    NSLog(@"submitRoundWithParams: %@", [params JSONRepresentationPretyPrinted:YES]);
     [self POST:@"/submitRound" parameters:params success:success failure:failure];
 }
 
 
 /**
-*  Submit answers
+*  Get roundData
 *
 */
 + (void)getRoundDataWithGameId:(NSNumber *)gameId success:(Success)success failure:(Failure)failure {

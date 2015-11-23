@@ -17,7 +17,7 @@
 
 
 /**
-*  Get roundData
+*  Get roundData use for reload
 *
 */
 + (void)getRoundDataWithGameId:(NSNumber *)gameId success:(Success)success failure:(Failure)failure;

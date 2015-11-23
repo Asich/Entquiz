@@ -7,10 +7,14 @@
 //
 
 //#define kAPIBaseURLString @"http://bitvazagrant.kz"
-#define kAPIBaseURLString @"http://192.168.1.3:9000"
+#define kAPIBaseURLString @"http://192.168.1.4:9000"
+
+//#define kLogs NO
+#define kLogs YES
 
 
 #import "ApiClient.h"
+#import "NSObject+Json.h"
 
 @implementation ApiClient
 
@@ -28,10 +32,21 @@
 
 + (void)POST:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
+    if (kLogs) {
+        NSLog(@"path: %@", path);
+        NSLog(@"parameters: %@", [parameters JSONRepresentation]);
+    }
+
     [[self sharedManager] POST:[self apiUrlWithPath:path] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
+        if (kLogs) {
+            NSLog(@"response: %@", [responseObject JSONRepresentation]);
+        }
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (kLogs) {
+            NSLog(@"response: %@", error.description);
+        }
         failure(error.code, error.description);
     }];
 }
@@ -40,10 +55,20 @@
 
 + (void)GET:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
+    if (kLogs) {
+        NSLog(@"path: %@", path);
+        NSLog(@"parameters: %@", [parameters JSONRepresentation]);
+    }
     [[self sharedManager] GET:[self apiUrlWithPath:path] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
+        if (kLogs) {
+            NSLog(@"response: %@", [responseObject JSONRepresentation]);
+        }
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (kLogs) {
+            NSLog(@"response: %@", error.description);
+        }
         failure(error.code, error.description);
     }];
 }
