@@ -11,21 +11,17 @@
 #import "AuthApi.h"
 #import "SVProgressHUD.h"
 #import "SecurityTokenManager.h"
-#import "ALView+PureLayout.h"
 #import "StdTextField.h"
 #import "UIViewController+Extensions.h"
 #import "User.h"
 #import "MainViewController.h"
 #import "UIButton+EntStyle.h"
+#import "Consts.h"
 
-#define kUserNameTextFieldPlaceholder @"Логин"
-#define kPasswordButtonTitle @"Пароль"
-#define kRegisterButtonTitle @"Создать"
 
 @interface RegistrationViewController ()
 @property(nonatomic, strong) StdTextField *userNameTextField;
 @property(nonatomic, strong) StdTextField *passwordTextField;
-
 @end
 
 @implementation RegistrationViewController
@@ -50,17 +46,16 @@
     __weak RegistrationViewController *wSelf = self;
 
     if (self.userNameTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
-        [SVProgressHUD showWithStatus:@"Регистрация"];
+        [SVProgressHUD showWithStatus:kRegister];
         [AuthApi registerWithName:self.userNameTextField.text andPassword:self.passwordTextField.text success:^(id response) {
             [SVProgressHUD dismiss];
 
             if ([response[@"success"] boolValue]) {
-                [SVProgressHUD showSuccessWithStatus:@"Вы успешно зарегистривоались"];
+                [SVProgressHUD showSuccessWithStatus:kRegisterSuccess];
                 [wSelf login];
             }
 
         } failure:^(NSInteger code, NSString *message) {
-            NSLog(@"REGISTER FAILURE MESSAGE: %@", message);
             [SVProgressHUD dismiss];
         }];
     }
@@ -73,7 +68,6 @@
 
         [SVProgressHUD showWithStatus:@"Вход"];
         [AuthApi loginWithName:self.userNameTextField.text andPassword:self.passwordTextField.text success:^(id response) {
-            NSLog(@"REGISTER SUCCESS RESPONSE: %@", response);
 
             if ([response[@"success"] boolValue]) {
                 NSLog(@"authorized user");
@@ -83,13 +77,13 @@
 
                 //For token based authentication
                 //save userName to userDefaults
-                [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"userName"];
+                [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:kUsernameKey];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 //save secure token for name
                 [[SecurityTokenManager sharedManager] writeToken:response[@"token"] userName:self.userNameTextField.text];
 
                 //REGISTER DEVICE TOKEN FOR PUSH
-                NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"devicePushTokenId"];
+                NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:kDevicePushTokenId];
                 if (deviceToken) {
                     [AuthApi registerPushDeviceToke:deviceToken success:^(id response2) {
                         NSLog(@"Device token register success");
@@ -103,7 +97,6 @@
 
             [SVProgressHUD dismiss];
         } failure:^(NSInteger code, NSString *message) {
-            NSLog(@"REGISTER FAILURE MESSAGE: %@", message);
             [SVProgressHUD dismiss];
         }];
     }

@@ -9,9 +9,6 @@
 #import "AppDelegate.h"
 #import "IndexViewController.h"
 #import "UIColor+Extensions.h"
-#import "NSObject+Json.h"
-#import "LoginViewController.h"
-#import "UIAlertView+Blocks.h"
 #import "PushNotificationHandler.h"
 #import "UIFont+Extension.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
@@ -112,62 +109,27 @@
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
 {
     //handle the actions
-    if ([identifier isEqualToString:@"declineAction"]){
+    if ([identifier isEqualToString:@"declineAction"]) {
     }
-    else if ([identifier isEqualToString:@"answerAction"]){
+    else if ([identifier isEqualToString:@"answerAction"]) {
     }
 }
 #endif
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"didReceiveRemoteNotification 1: %@", [userInfo JSONRepresentation]);
-//    [PushNotificationHandler handlePushWithData:userInfo];
-//    if (userInfo[@"uid"]) {
-//        [ProfileApi notificationPullUid:userInfo[@"uid"]];
-//    }
-}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {}
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-    NSLog(@"didReceiveRemoteNotification 2: %@", [userInfo JSONRepresentation]);
-//    [PushNotificationHandler handlePushWithData:userInfo];
-//    if (userInfo[@"uid"]) {
-//        [ProfileApi notificationPullUid:userInfo[@"uid"]];
-//    }
     [PushNotificationHandler handlePushWithUserInfo:userInfo];
-
-//    NSString *message = userInfo[@"aps"][@"alert"];
-//    [UIAlertView showWithTitle:nil message:message cancelButtonTitle:@"НЕТ" otherButtonTitles:@[@"ДА"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-//        if (alertView.cancelButtonIndex != buttonIndex) {
-//
-//            UINavigationController *nc = (UINavigationController *) self.window.rootViewController;
-//            LoginViewController *vc = [[LoginViewController alloc] init];
-//            [nc pushViewController:vc animated:YES];
-//
-//        }
-//    }];
-//
-// }
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-    NSLog(@"did register for remote notification");
-    
     const unsigned* tokenBytes = [devToken bytes];
     NSString* vTokenId = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
                           ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                           ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                           ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
     
-    NSLog(@"vTokenId: %@", vTokenId);
-    
     [[NSUserDefaults standardUserDefaults] setValue:vTokenId forKey:@"devicePushTokenId"];
-    
-//    [ProfileApi preparePushTokens:@{@"token" : vTokenId , @"deviceOs" : @"ios"} success:^(id response) {
-//        NSLog(@"response: %@", response);
-//    } failure:^(NSInteger code, NSString *message) {
-//        NSLog(@"%i %@", code, message);
-//    }];
-    
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

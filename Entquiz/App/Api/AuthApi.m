@@ -6,6 +6,8 @@
 #import "AuthApi.h"
 #import "AFHTTPSessionManager.h"
 #import "User.h"
+#import "SecurityTokenManager.h"
+#import "Consts.h"
 
 
 @implementation AuthApi {}
@@ -23,6 +25,16 @@
                                   forHTTPHeaderField:@"Authorization"];
 
     [self POST:@"/registerDevice" parameters:@{@"deviceId" : deviceToken, @"deviceOS" : @"iOS"} success:success failure:failure];
+}
+
++ (void)logout {
+    [User sharedInstance].accessToken = nil;
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:kUsernameKey];
+    [[SecurityTokenManager sharedManager] removeTokenForUserName:userName];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserIdKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUsernameKey];
+    UINavigationController *nc = (UINavigationController *) [[UIApplication sharedApplication].delegate window].rootViewController;
+    [nc popToRootViewControllerAnimated:YES];
 }
 
 

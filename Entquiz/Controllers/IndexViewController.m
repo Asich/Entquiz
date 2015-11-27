@@ -13,17 +13,11 @@
 #import "SecurityTokenManager.h"
 #import "MainViewController.h"
 #import "User.h"
-#import "UIColor+Extensions.h"
 #import "UIFont+Extension.h"
 #import "UIViewController+Extensions.h"
-#import "UIButton+BackgroudForState.h"
 #import "UIButton+EntStyle.h"
 #import "AuthApi.h"
-#import "UIAlertView+Blocks.h"
-
-#define kAppNameTitleString @"Битва за грант"
-#define kCreateButtonTitle @"Создать аккаунт"
-#define kEnterButtonTitle @"Вход"
+#import "Consts.h"
 
 
 @interface IndexViewController ()
@@ -49,8 +43,8 @@
 - (void)authenticateUser {
     //todo do authentication with token
 
-    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
-    NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"userId"];
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:kUsernameKey];
+    NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:kUserIdKey];
 
     if (userName) {
         //CREATE SHARED USER
@@ -59,8 +53,8 @@
         [User sharedInstance].userName = userName;
         [User sharedInstance].userId = userId;
 
-        //REGISTER FOR PUSH
-        NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"devicePushTokenId"];
+        //REGISTER FOR PUSH NOTIFICATION
+        NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:kDevicePushTokenId];
         if (deviceToken) {
             [AuthApi registerPushDeviceToke:deviceToken success:^(id response) {
                 NSLog(@"Device token register success");

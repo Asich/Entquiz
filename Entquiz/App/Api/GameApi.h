@@ -30,13 +30,13 @@
 + (void)submitRoundWithParams:(NSDictionary *)params success:(Success)success failure:(Failure)failure;
 
 /**
-* Find opponent
+* Find opponent for game with
 *
 */
 + (void)findOpponentWithName:(NSString *)name success:(Success)success failure:(Failure)failure;
 
 /**
-* Invite for game
+* Invite for game with
 *
 */
 + (void)inviteOpponentWithOpponentId:(NSNumber *)opponentId success:(Success)success failure:(Failure)failure;

@@ -18,15 +18,12 @@
 #import "GameRoundUser.h"
 #import "RoundCategory.h"
 #import "GameApi.h"
-#import "NSObject+Json.h"
 #import "Question.h"
 #import "UIViewController+Extensions.h"
-
+#import "Consts.h"
 
 @interface PlayingGameManagerViewController() {}
-
 @property (nonatomic, strong) NSNumber *opponentId;
-
 @property (nonatomic, strong) GameRound *gameRound;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) ScoreContainerView *scoreContainerView;
@@ -116,7 +113,7 @@
 
         [SVProgressHUD dismiss];
     } failure:^(NSInteger code, NSString *message) {
-        [UIAlertView showWithTitle:nil message:@"Не удалось начать игру" cancelButtonTitle:@"ОК" otherButtonTitles:nil tapBlock:nil];
+        [UIAlertView showWithTitle:nil message:kCannotStartGameAlertMessage cancelButtonTitle:@"ОК" otherButtonTitles:nil tapBlock:nil];
         [self.navigationController popViewControllerAnimated:YES];
         [SVProgressHUD dismiss];
     }];
@@ -137,37 +134,10 @@
         [self buildScoreContainerView];
         [self reloadStatusButtonTitle];
 
-        //if gameRound has no opponent yet
-        //choose category
-        //and then answer on 3 questions
-        //if gameRound has opponent
-        //show question to answer
-//        if (!self.gameRound.opponent) {
-
-//            ChooseCategoryViewController *vc = [[ChooseCategoryViewController alloc] initWithRoundData:self.gameRound.data];
-//            [self presentViewController:vc animated:YES completion:nil];
-//            vc.onRoundCategoryClick = ^(RoundData *roundData) {
-//                [wSelf showQuestionWithRoundData:roundData];
-//            };
-
-//            [self reloadStatusButtonTitle];
-//
-//        } else {
-//
-//            if (self.gameRound.data.count == 0) {
-//
-//            } else {
-//                [self showQuestionWithRoundData:self.gameRound.data[0]];
-//            }
-//
-//        }
-
-
-
         [SVProgressHUD dismiss];
-    } failure:^(NSInteger code, NSString *message) {
 
-        [UIAlertView showWithTitle:nil message:@"Не удалось начать игру" cancelButtonTitle:@"ОК" otherButtonTitles:nil tapBlock:nil];
+    } failure:^(NSInteger code, NSString *message) {
+        [UIAlertView showWithTitle:nil message:kCannotStartGameAlertMessage cancelButtonTitle:@"ОК" otherButtonTitles:nil tapBlock:nil];
         [self.navigationController popViewControllerAnimated:YES];
         [SVProgressHUD dismiss];
     }];
@@ -239,9 +209,9 @@
 
 - (void)reloadStatusButtonTitle {
     if (self.gameRound.data.count > 0) {
-            [self.statusButton setTitle:@"Играть" forState:UIControlStateNormal];
+            [self.statusButton setTitle:kPlay forState:UIControlStateNormal];
         } else {
-            [self.statusButton setTitle:@"Ждем" forState:UIControlStateNormal];
+            [self.statusButton setTitle:kWait forState:UIControlStateNormal];
         }
 }
 
@@ -276,7 +246,7 @@
 
 
     self.statusButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.statusButton setTitle:@"Ждем" forState:UIControlStateNormal];
+    [self.statusButton setTitle:kWait forState:UIControlStateNormal];
     [self.statusButton addTarget:self action:@selector(clickStatusButton) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.statusButton];
     [self.statusButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
@@ -345,7 +315,6 @@
     [roundResultView1 autoAlignAxisToSuperviewAxis:ALAxisVertical];
 
 
-
     [self.roundResultViews addObject:roundResultView1];
 }
 
@@ -355,8 +324,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc {
-
-}
+- (void)dealloc {}
 
 @end

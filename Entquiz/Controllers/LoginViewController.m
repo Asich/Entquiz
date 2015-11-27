@@ -16,11 +16,7 @@
 #import "UIColor+Extensions.h"
 #import "UIFont+Extension.h"
 #import "UIViewController+Extensions.h"
-
-#define kUserNameTextFieldPlaceholder @"Логин"
-#define kPasswordTextFieldPlaceholder @"Пароль"
-#define kEnterButtonTitle @"Войти"
-#define kForgotPasswordButtonTitle @"Забыл пароль"
+#import "Consts.h"
 
 @interface LoginViewController ()
 @property(nonatomic, strong) StdTextField *userNameTextField;
@@ -51,12 +47,10 @@
     
     if (self.userNameTextField.text.length > 0 && self.passwordTextField.text.length > 0) {
 
-        [SVProgressHUD showWithStatus:@"Вход"];
+        [SVProgressHUD showWithStatus:kEnterButtonTitle];
         [AuthApi loginWithName:self.userNameTextField.text andPassword:self.passwordTextField.text success:^(id response) {
-            NSLog(@"REGISTER SUCCESS RESPONSE: %@", response);
 
             if ([response[@"success"] boolValue]) {
-                NSLog(@"authorized user");
 
                 [User sharedInstance].userName = self.userNameTextField.text;
                 [User sharedInstance].accessToken = response[@"token"];
@@ -64,15 +58,15 @@
 
                 //For token based authentication
                 //save userName to userDefaults
-                [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:@"userName"];
-                [[NSUserDefaults standardUserDefaults] setObject:response[@"userId"] forKey:@"userId"];
+                [[NSUserDefaults standardUserDefaults] setObject:self.userNameTextField.text forKey:kUsernameKey];
+                [[NSUserDefaults standardUserDefaults] setObject:response[@"userId"] forKey:kUserIdKey];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 //save secure token for name
                 [[SecurityTokenManager sharedManager] writeToken:response[@"token"] userName:self.userNameTextField.text];
 
 
                 //REGISTER DEVICE TOKEN FOR PUSH
-                NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"devicePushTokenId"];
+                NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:kDevicePushTokenId];
                 if (deviceToken) {
                     [AuthApi registerPushDeviceToke:deviceToken success:^(id response2) {
                         NSLog(@"Device token register success");
@@ -87,7 +81,6 @@
 
             [SVProgressHUD dismiss];
         } failure:^(NSInteger code, NSString *message) {
-            NSLog(@"REGISTER FAILURE MESSAGE: %@", message);
             [SVProgressHUD dismiss];
         }];
     }
@@ -122,7 +115,7 @@
 
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginButton applyEntStyleGreen];
-    [loginButton setTitle:kEnterButtonTitle forState:UIControlStateNormal];
+    [loginButton setTitle:kLoginButtonTitle forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [form pushView:loginButton marginTop:20 centered:YES];
 

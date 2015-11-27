@@ -12,5 +12,6 @@
 
 - (void)writeToken:(NSString *)token userName:(NSString *)userName;
 - (NSString *)readTokenForUserName:(NSString *)userName;
+- (void)removeTokenForUserName:(NSString *)userName;
 
 @end

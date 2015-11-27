@@ -33,6 +33,7 @@
 + (void)POST:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
     if (kLogs) {
+        NSLog(@"---- ---- ---- ---- ---- -------- ---- ---- ----");
         NSLog(@"path: %@", path);
         NSLog(@"parameters: %@", [parameters JSONRepresentation]);
     }
@@ -41,11 +42,13 @@
     {
         if (kLogs) {
             NSLog(@"response: %@", [responseObject JSONRepresentation]);
+            NSLog(@"---- ---- ---- ---- ---- -------- ---- ---- ----");
         }
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (kLogs) {
             NSLog(@"response: %@", error.description);
+            NSLog(@"---- ---- ---- ---- ---- -------- ---- ---- ----");
         }
         failure(error.code, error.description);
     }];
@@ -56,6 +59,7 @@
 + (void)GET:(NSString *)path parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
     if (kLogs) {
+        NSLog(@"---- ---- ---- ---- ---- -------- ---- ---- ----");
         NSLog(@"path: %@", path);
         NSLog(@"parameters: %@", [parameters JSONRepresentation]);
     }
@@ -63,11 +67,13 @@
     {
         if (kLogs) {
             NSLog(@"response: %@", [responseObject JSONRepresentation]);
+            NSLog(@"---- ---- ---- ---- ---- -------- ---- ---- ----");
         }
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (kLogs) {
             NSLog(@"response: %@", error.description);
+            NSLog(@"---- ---- ---- ---- ---- -------- ---- ---- ----");
         }
         failure(error.code, error.description);
     }];

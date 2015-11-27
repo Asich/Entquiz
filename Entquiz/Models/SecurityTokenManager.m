@@ -32,4 +32,8 @@
                            account:userName];
 }
 
+- (void)removeTokenForUserName:(NSString *)userName {
+    [SSKeychain deletePasswordForService:kService account:userName];
+}
+
 @end

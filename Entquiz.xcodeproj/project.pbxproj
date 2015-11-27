@@ -82,6 +82,7 @@
 		3C9DC1F7FFC7EF64FB3858FB /* SecurityTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityTokenManager.h; sourceTree = "<group>"; };
 		3C9DC223867D80D26F998090 /* GameRoundUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRoundUser.h; sourceTree = "<group>"; };
 		3C9DC22C052DBCF2C5F9A6A8 /* GameApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameApi.h; sourceTree = "<group>"; };
+		3C9DC25FE98BBD267F636F95 /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
 		3C9DC3037B968C87D4A0BB5D /* SecurityTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityTokenManager.m; sourceTree = "<group>"; };
 		3C9DC371B4245685EE339E90 /* GameRoundUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRoundUser.m; sourceTree = "<group>"; };
 		3C9DC393A28EF0368B9E61A2 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -404,6 +405,7 @@
 				7B4620211B9E8F5600652FD6 /* FirstTime.h */,
 				7B4620221B9E8F5600652FD6 /* FirstTime.m */,
 				3C9DC516B14A0216B6F50F91 /* TargetConditionals.h */,
+				3C9DC25FE98BBD267F636F95 /* Consts.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
