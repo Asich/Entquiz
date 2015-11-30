@@ -5,13 +5,14 @@
 
 @implementation GameRound
 
-@synthesize data;
 @synthesize gameId;
 @synthesize scoreOne;
 @synthesize scoreTwo;
+@synthesize roundId;
+@synthesize data;
 @synthesize user;
 @synthesize opponent;
-@synthesize roundId;
+
 
 + (GameRound *)instanceFromDictionary:(NSDictionary *)aDictionary {
 
@@ -27,44 +28,34 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
 
-}
 
-- (void)setValue:(id)value forKey:(NSString *)key {
+    self.gameId = [self numberValueForKey:@"gameId"];
+    self.scoreOne = [self numberValueForKey:@"scoreOne"];
+    self.scoreTwo = [self numberValueForKey:@"scoreTwo"];
+    self.roundId = [self numberValueForKey:@"roundId"];
 
-    if ([key isEqualToString:@"data"]) {
-
-        if ([value isKindOfClass:[NSArray class]]) {
-
-            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
-            for (id valueMember in value) {
-                RoundData *populatedMember = [RoundData instanceFromDictionary:valueMember];
-                [myMembers addObject:populatedMember];
-            }
-
-            self.data = myMembers;
-
+    if ([objectData[@"data"] isKindOfClass:[NSArray class]]) {
+        NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[objectData[@"data"] count]];
+        for (id valueMember in objectData[@"data"]) {
+            RoundData *populatedMember = [RoundData instanceFromDictionary:valueMember];
+            [myMembers addObject:populatedMember];
         }
 
-    } else if ([key isEqualToString:@"user"]) {
-
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.user = [GameRoundUser instanceFromDictionary:value];
-        }
-
-    } else if ([key isEqualToString:@"opponent"]) {
-
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.opponent = [GameRoundUser instanceFromDictionary:value];
-        }
-
-    } else {
-        [super setValue:value forKey:key];
+        self.data = myMembers;
     }
 
+    if ([objectData[@"user"] isKindOfClass:[NSDictionary class]]) {
+        self.user = [GameRoundUser instanceFromDictionary:objectData[@"user"]];
+    }
+
+    if ([objectData[@"opponent"] isKindOfClass:[NSDictionary class]]) {
+        self.opponent = [GameRoundUser instanceFromDictionary:objectData[@"opponent"]];
+    }
+
+    objectData = nil;
+
 }
-
-
 
 @end

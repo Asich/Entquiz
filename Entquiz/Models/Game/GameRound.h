@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
 @class GameRoundUser;
 
-@interface GameRound : NSObject {
+@interface GameRound : ModelObject {
 
     NSArray *data;
     NSNumber *roundId;
