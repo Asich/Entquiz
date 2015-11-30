@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
-@interface Answer : NSObject {
+@interface Answer : ModelObject {
 
     NSNumber *answerId;
     NSString *img;

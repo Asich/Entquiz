@@ -22,20 +22,16 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
+
+    self.answerId = [self numberValueForKey:@"id"];
+    self.img = [self stringValueForKey:@"img"];
+    self.isTrue = [self boolValueForKey:@"isTrue"];
+    self.quesId = [self numberValueForKey:@"quesId"];
+    self.title = [self stringValueForKey:@"title"];
+
+    objectData = nil;
 
 }
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-
-    if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"answerId"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
-
-}
-
-
 
 @end
