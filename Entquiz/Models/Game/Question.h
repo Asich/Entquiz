@@ -1,19 +1,18 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
 @class QuestionQues;
 @class Answer;
 
-@interface Question : NSObject {
+@interface Question : ModelObject {
 
     NSArray *answers;
     QuestionQues *ques;
-    NSNumber *opponentAnsweredId;
 
 }
 
 @property (nonatomic, copy) NSArray *answers;
 @property (nonatomic, strong) QuestionQues *ques;
-@property (nonatomic, copy) NSNumber *opponentAnsweredId;
 
 + (Question *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
