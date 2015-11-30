@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
-@interface GameRoundUser : NSObject {
+@interface GameRoundUser : ModelObject {
 
     NSNumber *gameRoundUserId;
     NSString *password;
