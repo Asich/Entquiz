@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
 @class RoundCategory;
 
-@interface RoundData : NSObject {
+@interface RoundData : ModelObject {
 
     RoundCategory *category;
     NSArray *questions;
