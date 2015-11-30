@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
-@interface RoundCategory : NSObject {
+@interface RoundCategory : ModelObject {
 
     NSNumber *roundCategoryId;
     NSString *name;

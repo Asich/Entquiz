@@ -19,20 +19,13 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
+
+    self.roundCategoryId = [self numberValueForKey:@"id"];
+    self.name = [self stringValueForKey:@"name"];
+
+    objectData = nil;
 
 }
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-
-    if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"roundCategoryId"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
-
-}
-
-
 
 @end
