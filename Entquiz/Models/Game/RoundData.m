@@ -42,4 +42,18 @@
 
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        self.category = [coder decodeObjectForKey:@"category"];
+        self.questions = [coder decodeObjectForKey:@"questions"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:category forKey:@"category"];
+    [coder encodeObject:questions forKey:@"questions"];
+}
+
+
 @end

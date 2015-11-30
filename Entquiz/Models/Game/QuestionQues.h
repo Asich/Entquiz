@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "ModelObject.h"
 
-@interface QuestionQues : ModelObject {
+@interface QuestionQues : ModelObject<NSCoding> {
 
     NSNumber *catId;
     NSString *img;
@@ -17,5 +17,8 @@
 
 + (QuestionQues *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+- (instancetype)initWithCoder:(NSCoder *)coder;
+- (void)encodeWithCoder:(NSCoder *)coder;
 
 @end

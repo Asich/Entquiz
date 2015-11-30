@@ -3,7 +3,7 @@
 
 @class RoundCategory;
 
-@interface RoundData : ModelObject {
+@interface RoundData : ModelObject<NSCoding> {
 
     RoundCategory *category;
     NSArray *questions;
@@ -15,5 +15,8 @@
 
 + (RoundData *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+- (instancetype)initWithCoder:(NSCoder *)decoder;
+- (void)encodeWithCoder:(NSCoder *)encoder;
 
 @end

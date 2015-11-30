@@ -12,3 +12,5 @@ pod 'SSKeychain'
 
 pod 'Fabric'
 pod 'Crashlytics'
+
+pod 'TMCache'

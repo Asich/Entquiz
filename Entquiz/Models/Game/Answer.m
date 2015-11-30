@@ -34,4 +34,25 @@
 
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+
+        self.answerId = [coder decodeObjectForKey:@"answerId"];
+        self.img = [coder decodeObjectForKey:@"img"];
+        self.isTrue = [coder decodeBoolForKey:@"isTrue"];
+        self.quesId = [coder decodeObjectForKey:@"quesId"];
+        self.title = [coder decodeObjectForKey:@"title"];
+
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:answerId forKey:@"answerId"];
+    [coder encodeObject:img forKey:@"img"];
+    [coder encodeBool:isTrue forKey:@"isTrue"];
+    [coder encodeObject:quesId forKey:@"quesId"];
+    [coder encodeObject:title forKey:@"title"];
+}
+
 @end

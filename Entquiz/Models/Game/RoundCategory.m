@@ -28,4 +28,17 @@
 
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        self.roundCategoryId = [coder decodeObjectForKey:@"roundCategoryId"];
+        self.name = [coder decodeObjectForKey:@"name"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:roundCategoryId forKey:@"roundCategoryId"];
+    [coder encodeObject:name forKey:@"name"];
+}
+
 @end

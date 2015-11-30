@@ -51,6 +51,19 @@
     return nil;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        self.ques = [coder decodeObjectForKey:@"ques"];
+        self.answers = [coder decodeObjectForKey:@"answers"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:ques forKey:@"ques"];
+    [coder encodeObject:answers forKey:@"answers"];
+}
+
 
 
 @end
