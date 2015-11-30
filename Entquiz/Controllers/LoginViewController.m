@@ -23,9 +23,7 @@
 @property(nonatomic, strong) StdTextField *passwordTextField;
 @end
 
-@implementation LoginViewController {
-
-}
+@implementation LoginViewController {}
 
 - (id)init {
     self = [super init];

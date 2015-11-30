@@ -64,7 +64,13 @@
 }
 
 - (void)showSettings {
+    __weak MainViewController *wSelf = self;
+
     SettingsViewController *vc = [[SettingsViewController alloc] init];
+    vc.viewDismissed = ^{
+        NSLog(@"settings viewDismissed");
+        [wSelf.navigationController popToRootViewControllerAnimated:YES];
+    };
     [self presentViewController:vc animated:YES completion:nil];
 }
 

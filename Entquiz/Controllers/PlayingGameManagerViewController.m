@@ -21,6 +21,8 @@
 #import "Question.h"
 #import "UIViewController+Extensions.h"
 #import "Consts.h"
+#import "QuestionQues.h"
+#import "OpAnswer.h"
 
 @interface PlayingGameManagerViewController() {}
 @property (nonatomic, strong) NSNumber *opponentId;
@@ -290,16 +292,33 @@
     //if gameRound data has only one category
     //this means that current round is user's turn
     //so fill round view with opponents results
+
     if (self.gameRound.data.count == 1) {
+
         RoundData *roundData = self.gameRound.data[0];
         NSArray *questions = roundData.questions;
-        for (Question *question in questions) {
-            Answer *opponentAnswer = [question getAnswerById:question.opponentAnsweredId];
 
-            if (opponentAnswer.isTrue) {
-                [roundResultView1 setOpponentAnswerRight];
-            } else {
-                [roundResultView1 setOpponentAnswerFalse];
+        for (Question *question in questions) {
+            for (OpAnswer *opAnswer in self.gameRound.opAnswers) {
+                if ([question.ques.catId isEqualToNumber:opAnswer.catId] &&
+                        [self.gameRound.roundId isEqualToNumber:opAnswer.roundId]) {
+
+                    Answer *answer;
+
+                    if ([question.ques.questionQuesId isEqualToNumber:opAnswer.q1Id]) {
+                        answer = [question getAnswerById:opAnswer.a1Id];
+                    } else if ([question.ques.questionQuesId isEqualToNumber:opAnswer.q2Id]) {
+                        answer = [question getAnswerById:opAnswer.a2Id];
+                    } else if ([question.ques.questionQuesId isEqualToNumber:opAnswer.q3Id]) {
+                        answer = [question getAnswerById:opAnswer.a3Id];
+                    }
+
+                    if ([answer isTrue]) {
+                        [roundResultView1 setOpponentAnswerRight];
+                    } else {
+                        [roundResultView1 setOpponentAnswerFalse];
+                    }
+                }
             }
         }
     }

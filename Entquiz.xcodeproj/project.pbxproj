@@ -34,6 +34,7 @@
 		3C9DCA887525B0EF616CC62A /* NSObject+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCE54CDFFCBC5C61DA561 /* NSObject+Json.m */; };
 		3C9DCAB411DDAA53BAE748D0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC056E0E3A39CB2DC2B4C /* MainViewController.m */; };
 		3C9DCB6EB782C3792B515067 /* ModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC46A9782A2F2B1251E02 /* ModelObject.m */; };
+		3C9DCC0E35F20C81B2269391 /* OpAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC9F0B63DD10F940DB3EB /* OpAnswer.m */; };
 		3C9DCC8B09C17C57AB37E9F5 /* AnswerTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DCE44BE452087BDE9145A /* AnswerTimerView.m */; };
 		3C9DCCB2C1ABDE6A2BAE10D2 /* UIViewController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC8DF4B141DE35E466BF5 /* UIViewController+Extensions.m */; };
 		3C9DCD5178F98A3640515D60 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9DC692516B0054E3D6C0CB /* StartGameViewController.m */; };
@@ -112,6 +113,7 @@
 		3C9DC90DD53E71FF4B55BB37 /* AuthApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthApi.m; sourceTree = "<group>"; };
 		3C9DC97ED809C860B20C40F1 /* ScoreContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreContainerView.h; sourceTree = "<group>"; };
 		3C9DC9E5D19C75D69D3A97DA /* RoundData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundData.m; sourceTree = "<group>"; };
+		3C9DC9F0B63DD10F940DB3EB /* OpAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpAnswer.m; sourceTree = "<group>"; };
 		3C9DC9F3A2CE2636A0B24904 /* RoundResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundResultView.h; sourceTree = "<group>"; };
 		3C9DCA30752E4C0E5957FB0E /* RoundData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundData.h; sourceTree = "<group>"; };
 		3C9DCA81E1E26482ECF40B5F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		3C9DCF678DC09E4B543863BC /* NSObject+PWObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PWObject.h"; sourceTree = "<group>"; };
 		3C9DCFAF860C2777BC1800EA /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		3C9DCFC5D04FEFF8EBD783A1 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		3C9DCFF5D62804239FCC6BE7 /* OpAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpAnswer.h; sourceTree = "<group>"; };
 		70951B3F9A0074A7A9C67261 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B0ABE821B3EEC37005A062C /* Entquiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Entquiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0ABE861B3EEC37005A062C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				3C9DCE7BF152CB2AD5AC8CF2 /* GameRound.m */,
 				3C9DC223867D80D26F998090 /* GameRoundUser.h */,
 				3C9DC371B4245685EE339E90 /* GameRoundUser.m */,
+				3C9DCFF5D62804239FCC6BE7 /* OpAnswer.h */,
+				3C9DC9F0B63DD10F940DB3EB /* OpAnswer.m */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -650,6 +655,7 @@
 				3C9DCFFE0B88CF0936B006F5 /* UIButton+EntStyle.m in Sources */,
 				3C9DC55799B56B4D4C5212BF /* PushNotificationHandler.m in Sources */,
 				3C9DCFEEEBC24AFBC675F56C /* FindOpponentViewController.m in Sources */,
+				3C9DCC0E35F20C81B2269391 /* OpAnswer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
