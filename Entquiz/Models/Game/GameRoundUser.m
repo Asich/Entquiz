@@ -21,20 +21,16 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
+
+    self.gameRoundUserId = [self numberValueForKey:@"id"];
+    self.password = [self stringValueForKey:@"password"];
+    self.rating = [self numberValueForKey:@"rating"];
+    self.username = [self stringValueForKey:@"username"];
+
+    objectData = nil;
 
 }
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-
-    if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"gameRoundUserId"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
-    }
-
-}
-
 
 
 @end

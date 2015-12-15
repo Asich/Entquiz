@@ -27,14 +27,24 @@
     [self POST:@"/registerDevice" parameters:@{@"deviceId" : deviceToken, @"deviceOS" : @"iOS"} success:success failure:failure];
 }
 
-+ (void)logout {
+
+/**
+* Logout method removes accessToken from KeyChain
+* removes userId and username from userdefaults
+* and call completion block
+*
+* @param userDataClearedCompletion - block that calls in the end
+*/
++ (void)logoutCompletionBlock:(void (^)())userDataClearedCompletion {
     [User sharedInstance].accessToken = nil;
     NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:kUsernameKey];
     [[SecurityTokenManager sharedManager] removeTokenForUserName:userName];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserIdKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUsernameKey];
-    UINavigationController *nc = (UINavigationController *) [[UIApplication sharedApplication].delegate window].rootViewController;
-    [nc popToRootViewControllerAnimated:YES];
+
+    if (userDataClearedCompletion) {
+        userDataClearedCompletion();
+    }
 }
 
 

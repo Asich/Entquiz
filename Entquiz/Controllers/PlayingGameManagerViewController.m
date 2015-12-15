@@ -21,6 +21,9 @@
 #import "Question.h"
 #import "UIViewController+Extensions.h"
 #import "Consts.h"
+#import "QuestionQues.h"
+#import "OpAnswer.h"
+#import "TMDiskCache.h"
 
 @interface PlayingGameManagerViewController() {}
 @property (nonatomic, strong) NSNumber *opponentId;
@@ -219,13 +222,25 @@
     __weak PlayingGameManagerViewController *wSelf = self;
 
     if (self.gameRound.data.count == 1) {
+
         [self showQuestionWithRoundData:self.gameRound.data[0]];
+
+        [[TMDiskCache sharedCache] setObject:self.gameRound.data[0] forKey:[NSString stringWithFormat:@"round%i", self.roundResultViews.count + 1] block:^(TMDiskCache *cache, NSString *key, id <NSCoding> object, NSURL *fileURL) {
+            NSLog(@"fileURL: %@", fileURL);
+        }];
+
     } else if (self.gameRound.data.count > 1) {
+
         ChooseCategoryViewController *vc = [[ChooseCategoryViewController alloc] initWithRoundData:self.gameRound.data];
         [self presentViewController:vc animated:YES completion:nil];
         vc.onRoundCategoryClick = ^(RoundData *roundData) {
             [wSelf showQuestionWithRoundData:roundData];
+
+            [[TMDiskCache sharedCache] setObject:roundData forKey:[NSString stringWithFormat:@"round%i", self.roundResultViews.count + 1] block:^(TMDiskCache *cache, NSString *key, id <NSCoding> object, NSURL *fileURL) {
+                NSLog(@"fileurl: %@", fileURL);
+            }];
         };
+
     } else {
 
     }
@@ -275,6 +290,7 @@
 
     RoundResultView *roundResultView1 = [[RoundResultView alloc] initWithRoundNumber:self.roundResultViews.count + 1 categoryName:roundCategory.name];
     [self.scrollView addSubview:roundResultView1];
+    [self.roundResultViews addObject:roundResultView1];
 
 
     //fill round view with user results
@@ -288,34 +304,71 @@
 
 
     //if gameRound data has only one category
-    //this means that current round is user's turn
+    //this means that current round is user's reply
     //so fill round view with opponents results
+
     if (self.gameRound.data.count == 1) {
+
         RoundData *roundData = self.gameRound.data[0];
         NSArray *questions = roundData.questions;
-        for (Question *question in questions) {
-            Answer *opponentAnswer = [question getAnswerById:question.opponentAnsweredId];
 
-            if (opponentAnswer.isTrue) {
-                [roundResultView1 setOpponentAnswerRight];
-            } else {
-                [roundResultView1 setOpponentAnswerFalse];
-            }
+        [self drawOpponentAnswer:roundResultView1
+                       questions:questions
+                 opponentAnswers:self.gameRound.opAnswers];
+
+
+        RoundResultView *lastResultView = [self.roundResultViews lastObject];
+        NSInteger lastObjectIndex = [self.roundResultViews indexOfObject:lastResultView];
+        if (lastObjectIndex - 1 > 0) {
+            RoundResultView *prevResultView = self.roundResultViews[(NSUInteger) (lastObjectIndex - 1)];
+
+            RoundData *savedRoundData = [[TMDiskCache sharedCache] objectForKey:[NSString stringWithFormat:@"round%i", lastObjectIndex - 1]];
+
+            [self drawOpponentAnswer:prevResultView
+                           questions:savedRoundData.questions
+                     opponentAnswers:self.gameRound.opAnswers];
+
         }
     }
 
 
     /////
-    UIView *lastResultView = [self.roundResultViews lastObject];
-    if (lastResultView) {
-        [roundResultView1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:lastResultView withOffset:5];
-    } else {
+    if (self.roundResultViews.count == 1) {
         [roundResultView1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.scoreContainerView withOffset:5];
+    } else {
+        UIView *lastResultView = self.roundResultViews[self.roundResultViews.count - 2];
+        [roundResultView1 autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:lastResultView withOffset:5];
     }
     [roundResultView1 autoAlignAxisToSuperviewAxis:ALAxisVertical];
 
+}
 
-    [self.roundResultViews addObject:roundResultView1];
+- (void)drawOpponentAnswer:(RoundResultView *)roundResultView
+                 questions:(NSArray *)questions
+           opponentAnswers:(NSArray *)opponentAnswers {
+
+    for (Question *question in questions) {
+        for (OpAnswer *opAnswer in opponentAnswers) {
+            if ([question.ques.catId isEqualToNumber:opAnswer.catId]) {
+
+                Answer *answer;
+
+                if ([question.ques.questionQuesId isEqualToNumber:opAnswer.q1Id]) {
+                    answer = [question getAnswerById:opAnswer.a1Id];
+                } else if ([question.ques.questionQuesId isEqualToNumber:opAnswer.q2Id]) {
+                    answer = [question getAnswerById:opAnswer.a2Id];
+                } else if ([question.ques.questionQuesId isEqualToNumber:opAnswer.q3Id]) {
+                    answer = [question getAnswerById:opAnswer.a3Id];
+                }
+
+                if ([answer isTrue]) {
+                    [roundResultView setOpponentAnswerRight];
+                } else {
+                    [roundResultView setOpponentAnswerFalse];
+                }
+            }
+        }
+    }
 }
 
 #pragma mark -

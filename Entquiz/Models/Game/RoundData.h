@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
 @class RoundCategory;
 
-@interface RoundData : NSObject {
+@interface RoundData : ModelObject<NSCoding> {
 
     RoundCategory *category;
     NSArray *questions;
@@ -14,5 +15,8 @@
 
 + (RoundData *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+- (instancetype)initWithCoder:(NSCoder *)decoder;
+- (void)encodeWithCoder:(NSCoder *)encoder;
 
 @end

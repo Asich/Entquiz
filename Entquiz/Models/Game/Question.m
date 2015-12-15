@@ -7,7 +7,6 @@
 
 @synthesize answers;
 @synthesize ques;
-@synthesize opponentAnsweredId;
 
 + (Question *)instanceFromDictionary:(NSDictionary *)aDictionary {
 
@@ -23,39 +22,22 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
 
-}
-
-- (void)setValue:(id)value forKey:(NSString *)key {
-
-    if ([key isEqualToString:@"answers"]) {
-
-        if ([value isKindOfClass:[NSArray class]]) {
-
-            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
-            for (id valueMember in value) {
-                Answer *populatedMember = [Answer instanceFromDictionary:valueMember];
-                [myMembers addObject:populatedMember];
-            }
-
-            self.answers = myMembers;
-
+    if ([objectData[@"answers"] isKindOfClass:[NSArray class]]) {
+        NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[objectData[@"answers"] count]];
+        for (id valueMember in objectData[@"answers"]) {
+            Answer *populatedMember = [Answer instanceFromDictionary:valueMember];
+            [myMembers addObject:populatedMember];
         }
-
-    } else if ([key isEqualToString:@"opAns"]) {
-
-        [self setValue:value forKey:@"opponentAnsweredId"];
-
-    } else if ([key isEqualToString:@"ques"]) {
-
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.ques = [QuestionQues instanceFromDictionary:value];
-        }
-
-    } else {
-        [super setValue:value forKey:key];
+        self.answers = myMembers;
     }
+
+    if ([objectData[@"ques"] isKindOfClass:[NSDictionary class]]) {
+        self.ques = [QuestionQues instanceFromDictionary:objectData[@"ques"]];
+    }
+
+    objectData = nil;
 
 }
 
@@ -67,6 +49,19 @@
         }
     }
     return nil;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        self.ques = [coder decodeObjectForKey:@"ques"];
+        self.answers = [coder decodeObjectForKey:@"answers"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:ques forKey:@"ques"];
+    [coder encodeObject:answers forKey:@"answers"];
 }
 
 

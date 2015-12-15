@@ -22,38 +22,38 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
 
-}
-
-- (void)setValue:(id)value forKey:(NSString *)key {
-
-    if ([key isEqualToString:@"category"]) {
-
-        if ([value isKindOfClass:[NSDictionary class]]) {
-            self.category = [RoundCategory instanceFromDictionary:value];
-        }
-
-    } else if ([key isEqualToString:@"questions"]) {
-
-        if ([value isKindOfClass:[NSArray class]]) {
-
-            NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[value count]];
-            for (id valueMember in value) {
-                Question *populatedMember = [Question instanceFromDictionary:valueMember];
-                [myMembers addObject:populatedMember];
-            }
-
-            self.questions = myMembers;
-
-        }
-
-    } else {
-        [super setValue:value forKey:key];
+    if ([objectData[@"category"] isKindOfClass:[NSDictionary class]]) {
+        self.category = [RoundCategory instanceFromDictionary:objectData[@"category"]];
     }
 
+    if ([objectData[@"questions"] isKindOfClass:[NSArray class]]) {
+        NSMutableArray *myMembers = [NSMutableArray arrayWithCapacity:[objectData[@"questions"] count]];
+        for (id valueMember in objectData[@"questions"]) {
+            Question *populatedMember = [Question instanceFromDictionary:valueMember];
+            [myMembers addObject:populatedMember];
+        }
+
+        self.questions = myMembers;
+    }
+
+    objectData = nil;
+
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        self.category = [coder decodeObjectForKey:@"category"];
+        self.questions = [coder decodeObjectForKey:@"questions"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:category forKey:@"category"];
+    [coder encodeObject:questions forKey:@"questions"];
+}
 
 
 @end

@@ -21,20 +21,34 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
+
+    self.catId = [self numberValueForKey:@"catId"];
+    self.img = [self stringValueForKey:@"img"];
+    self.questionQuesId = [self numberValueForKey:@"id"];
+    self.title = [self stringValueForKey:@"title"];
+
+    objectData = nil;
 
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
 
-    if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"questionQuesId"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
+        self.catId = [coder decodeObjectForKey:@"catId"];
+        self.img = [coder decodeObjectForKey:@"img"];
+        self.questionQuesId = [coder decodeObjectForKey:@"questionQuesId"];
+        self.title = [coder decodeObjectForKey:@"title"];
+
     }
-
+    return self;
 }
 
-
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:catId forKey:@"catId"];
+    [coder encodeObject:img forKey:@"img"];
+    [coder encodeObject:questionQuesId forKey:@"questionQuesId"];
+    [coder encodeObject:title forKey:@"title"];
+}
 
 @end

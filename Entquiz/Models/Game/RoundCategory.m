@@ -19,20 +19,26 @@
         return;
     }
 
-    [self setValuesForKeysWithDictionary:aDictionary];
+    objectData = aDictionary;
+
+    self.roundCategoryId = [self numberValueForKey:@"id"];
+    self.name = [self stringValueForKey:@"name"];
+
+    objectData = nil;
 
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-
-    if ([key isEqualToString:@"id"]) {
-        [self setValue:value forKey:@"roundCategoryId"];
-    } else {
-        [super setValue:value forUndefinedKey:key];
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        self.roundCategoryId = [coder decodeObjectForKey:@"roundCategoryId"];
+        self.name = [coder decodeObjectForKey:@"name"];
     }
-
+    return self;
 }
 
-
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:roundCategoryId forKey:@"roundCategoryId"];
+    [coder encodeObject:name forKey:@"name"];
+}
 
 @end

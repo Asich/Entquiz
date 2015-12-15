@@ -1,8 +1,10 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
 @class GameRoundUser;
+@class OpAnswer;
 
-@interface GameRound : NSObject {
+@interface GameRound : ModelObject {
 
     NSArray *data;
     NSNumber *roundId;
@@ -11,6 +13,7 @@
     NSNumber *scoreTwo;
     GameRoundUser *user;
     GameRoundUser *opponent;
+    NSArray *opAnswers;
 
 }
 
@@ -21,6 +24,7 @@
 @property (nonatomic, copy) NSNumber *scoreTwo;
 @property (nonatomic, strong) GameRoundUser *user;
 @property (nonatomic, strong) GameRoundUser *opponent;
+@property (nonatomic, strong) NSArray *opAnswers;
 
 + (GameRound *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;

@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
+#import "ModelObject.h"
 
-@interface RoundCategory : NSObject {
+@interface RoundCategory : ModelObject<NSCoding> {
 
     NSNumber *roundCategoryId;
     NSString *name;
@@ -12,5 +13,8 @@
 
 + (RoundCategory *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+- (instancetype)initWithCoder:(NSCoder *)decoder;
+- (void)encodeWithCoder:(NSCoder *)encoder;
 
 @end

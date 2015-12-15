@@ -7,4 +7,5 @@
 
 
 @interface SettingsViewController : UIViewController
+@property (nonatomic, copy) void (^viewDismissed)();
 @end

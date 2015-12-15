@@ -34,7 +34,15 @@
 #pragma mark - config actions
 
 - (void)logout {
-    [AuthApi logout];
+    __weak SettingsViewController *wSelf = self;
+    [AuthApi logoutCompletionBlock:^{
+        [wSelf dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"dismissViewControllerAnimated completion");
+            if (wSelf.viewDismissed) {
+                wSelf.viewDismissed;
+            }
+        }];
+    }];
 }
 
 #pragma mark - config ui
