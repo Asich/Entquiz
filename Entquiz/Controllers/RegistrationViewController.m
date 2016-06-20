@@ -85,9 +85,9 @@
                 //REGISTER DEVICE TOKEN FOR PUSH
                 NSString *deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:kDevicePushTokenId];
                 if (deviceToken) {
-                    [AuthApi registerPushDeviceToke:deviceToken success:^(id response2) {
+                    [AuthApi registerPushDeviceToken:deviceToken success:^(id response2) {
                         NSLog(@"Device token register success");
-                    } failure:^(NSInteger code, NSString *message) {
+                    }                        failure:^(NSInteger code, NSString *message) {
                         NSLog(@"Device token register fail");
                     }];
                 }

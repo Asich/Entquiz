@@ -19,7 +19,7 @@
 * @param success
 * @param failure
 */
-+ (void)registerPushDeviceToke:(NSString *)deviceToken success:(Success)success failure:(Failure)failure;
++ (void)registerPushDeviceToken:(NSString *)deviceToken success:(Success)success failure:(Failure)failure;
 
 /**
 * Logout method removes accessToken from KeyChain

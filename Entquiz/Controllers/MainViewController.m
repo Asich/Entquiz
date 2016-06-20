@@ -9,12 +9,9 @@
 #import "User.h"
 #import "StatisticsViewController.h"
 #import "SettingsViewController.h"
-#import "GameApi.h"
-#import "NSObject+Json.h"
 #import "UIButton+EntStyle.h"
 #import "UIFont+Extension.h"
 #import "UIViewController+Extensions.h"
-#import "UIColor+Extensions.h"
 
 #define kSettingsButtonTitle @"Settings"
 #define kStatisticsButtonTitle @"Statistics"

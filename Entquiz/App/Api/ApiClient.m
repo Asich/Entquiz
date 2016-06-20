@@ -7,7 +7,7 @@
 //
 
 //#define kAPIBaseURLString @"http://bitvazagrant.kz"
-#define kAPIBaseURLString @"http://192.168.1.6:9000"
+#define kAPIBaseURLString @"http://192.168.100.7:9000"
 
 //#define kLogs NO
 #define kLogs YES

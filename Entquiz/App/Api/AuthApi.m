@@ -20,7 +20,7 @@
     [self POST:@"/login" parameters:@{@"username" : name, @"password" : password} success:success failure:failure];
 }
 
-+ (void)registerPushDeviceToke:(NSString *)deviceToken success:(Success)success failure:(Failure)failure {
++ (void)registerPushDeviceToken:(NSString *)deviceToken success:(Success)success failure:(Failure)failure {
     [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
                                   forHTTPHeaderField:@"Authorization"];
 
