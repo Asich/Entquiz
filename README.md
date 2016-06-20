@@ -1,3 +1,3 @@
 # Entquiz
 
-This app is "Borba umov" clone for Ent preparation.
+😃  This app is "Борьба умов" clone for Ent preparation 😃
