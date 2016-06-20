@@ -9,8 +9,28 @@
 
 @interface AuthApi : ApiClient
 
+
+/**
+ * Sign in
+ *
+ * @param name - user name
+ * @param password - user password
+ * @param success
+ * @param failure
+ */
 + (void)registerWithName:(NSString *)name andPassword:(NSString *)password success:(Success)success failure:(Failure)failure;
+
+
+/**
+ * Login
+ *
+ * @param name - user name
+ * @param password - user password
+ * @param success
+ * @param failure
+ */
 + (void)loginWithName:(NSString *)name andPassword:(NSString *)password success:(Success)success failure:(Failure)failure;
+
 
 /**
 * Registers push device token in server link with user in database
@@ -20,6 +40,7 @@
 * @param failure
 */
 + (void)registerPushDeviceToken:(NSString *)deviceToken success:(Success)success failure:(Failure)failure;
+
 
 /**
 * Logout method removes accessToken from KeyChain

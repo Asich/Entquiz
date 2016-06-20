@@ -13,6 +13,7 @@
 #define kLogs YES
 
 
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 #import "ApiClient.h"
 #import "NSObject+Json.h"
 
@@ -47,7 +48,18 @@
         success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (kLogs) {
-            NSLog(@"response: %@", error.description);
+
+            NSLog(@"request operation: %@", operation.responseObject);
+            NSLog(@"response: %@ \n\n\n%f", error.description, (double) error.code);
+
+            if (operation.responseObject[@"error"]) {
+                [UIAlertView showWithTitle:@""
+                                   message:operation.responseObject[@"error"]
+                         cancelButtonTitle:@"Хорошо"
+                         otherButtonTitles:nil
+                                  tapBlock:nil];
+            }
+
             NSLog(@"---- ---- ---- ---- ---- -------- ---- ---- ----");
         }
         failure(error.code, error.description);

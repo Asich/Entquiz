@@ -5,7 +5,6 @@
 
 #import "GameApi.h"
 #import "User.h"
-#import "NSObject+Json.h"
 
 
 @implementation GameApi {}

@@ -4,7 +4,6 @@
 //
 
 #import "AuthApi.h"
-#import "AFHTTPSessionManager.h"
 #import "User.h"
 #import "SecurityTokenManager.h"
 #import "Consts.h"
@@ -12,14 +11,40 @@
 
 @implementation AuthApi {}
 
+
+/**
+ * Sign in
+ *
+ * @param name - user name
+ * @param password - user password
+ * @param success
+ * @param failure
+ */
 + (void)registerWithName:(NSString *)name andPassword:(NSString *)password success:(Success)success failure:(Failure)failure {
     [self POST:@"/register" parameters:@{@"username" : name, @"password" : password} success:success failure:failure];
 }
 
+
+/**
+ * Login
+ *
+ * @param name - user name
+ * @param password - user password
+ * @param success
+ * @param failure
+ */
 + (void)loginWithName:(NSString *)name andPassword:(NSString *)password success:(Success)success failure:(Failure)failure {
     [self POST:@"/login" parameters:@{@"username" : name, @"password" : password} success:success failure:failure];
 }
 
+
+/**
+* Registers push device token in server link with user in database
+*
+* @param deviceToken
+* @param success
+* @param failure
+*/
 + (void)registerPushDeviceToken:(NSString *)deviceToken success:(Success)success failure:(Failure)failure {
     [[self sharedManager].requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",[User sharedInstance].accessToken]
                                   forHTTPHeaderField:@"Authorization"];
